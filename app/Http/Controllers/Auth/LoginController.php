@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -44,4 +45,20 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
       }
+
+protected function attemptLogin(Request $request)
+{
+        
+    $user = User::where('email', $request->email)
+                     ->where('password', $request->password)
+                     ->first();
+
+    if(!isset($user)){
+        return false;
+    }
+    
+    Auth::login($user);
+    return redirect('/');
+
+}
 }

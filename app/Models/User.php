@@ -45,19 +45,9 @@ class User extends Authenticatable
     ];
 
     public const MEMBER = 1;
-    public const OWNER = 2;
-    public const ADMIN = 3;
-
-    public function timeline(){
-        return Product::where('user_id', $this->id)->latest()->get();
-    }
-
-    public function product()
-    {
-        return $this->hasMany(Product::class);
-    }
+    public const ADMIN = 2;
     
-    public function cart(){
-        return $this->hasMany(Cart::class);
+    public function history(){
+        return $this->hasMany(History::class);
     }
 }

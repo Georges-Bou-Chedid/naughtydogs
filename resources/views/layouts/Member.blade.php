@@ -37,6 +37,11 @@
      </button>
 
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     @if(session('Historyempty'))
+        <div class="badge" style="margin-left:70px; font-size:1.2rem; color:#ff4c68">
+            {{ session('Historyempty')}}
+        </div>
+        @endif
 
       <ul class="navbar-nav ml-auto">
       <li class="nav-item">
@@ -49,6 +54,10 @@
 
         <li class="nav-item">
           <a class="nav-link" href="/#pricing">Pricing</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/MyHistory">My History</a>
         </li>
 
                    
