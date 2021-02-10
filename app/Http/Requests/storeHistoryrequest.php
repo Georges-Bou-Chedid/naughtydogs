@@ -26,7 +26,7 @@ class storeHistoryrequest extends FormRequest
         return [
             'title' => 'required',              
             'Description' => 'required',
-            'DueDate' => 'required',
+            'DueDate' => 'date_format:Y-m-d|after:yesterday',
             'createuser' => 'required'
         ];
     }

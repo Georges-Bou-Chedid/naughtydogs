@@ -48,18 +48,23 @@
             <label for="DueDate">Due Date</label>
 
             <div class="control">
-                <input class="form-control @error('DueDate') is-invalid @enderror"  
-                    type="text"
-                    name="DueDate" 
-                    id="DueDate"
-                    value="{{ $history->DueDate }}"
-                    ></input>
-                @error('DueDate')
+            <input class="form-control @error('DueDate') is-invalid @enderror" type="date" name="DueDate">
+            @error('DueDate')
                 <span class="invalid-feedback" role="alert">
                  <strong>{{ $message }}</strong>
                 </span>
                 @enderror
-                
+            </div>
+        </div>
+
+        <div class="field">
+            <label for="Time">Time</label>
+
+            <div class="control">
+                <input class="form-control"  
+                    type="text"
+                    name="Time" 
+                    ></input>  
             </div>
         </div>
 
@@ -77,7 +82,7 @@
         <div class="field is-grouped">
             <div class="control">
             <button class="btn btn-primary" type="submit">Submit</button>
-            <a href="javascript:history.back()" class="btn btn-primary">Back</a>
+            <a href="javascript:history.back()" class="btn btn-danger">Back</a>
             </div>
             
             

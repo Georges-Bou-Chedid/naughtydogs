@@ -110,7 +110,7 @@
   <h3>{{$pricings->title}}</h3>
   </div>
   <div class="card-body">
-    <h2 class="prices">{{$pricings->img}}</h2>
+    <h2 class="prices"><img src = "assets/images/{{$pricings->img}}"></h2>
     <p>{{$pricings->Description}}</p>
     <a href="/{{ $pricings->id }}/edit" class="btn btn-dark btn-outline-light">Edit</a>
     <form method="POST" action="/{{ $pricings->id }}" >

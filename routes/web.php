@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,44 +17,41 @@ use Illuminate\Support\Facades\Route;
 Route::get('/registerOwner', [App\Http\Controllers\auth\RegisterOwnerController::class, 'create']);
 
 //Create Plan
-Route::post('/', [App\Http\Controllers\IndexController::class, 'store']);
-Route::get('/CreatePlan', [App\Http\Controllers\IndexController::class, 'create']);
+Route::post('/', [App\Http\Controllers\IndexController::class, 'store'])->middleware('auth');
+Route::get('/CreatePlan', [App\Http\Controllers\IndexController::class, 'create'])->middleware('auth');
 
 //Update, Delete Plan
-Route::get('/{Pricinglist}/edit', [App\Http\Controllers\IndexController::class, 'edit']);
-Route::put('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'update']);
-Route::delete('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'delete']);
+Route::get('/{Pricinglist}/edit', [App\Http\Controllers\IndexController::class, 'edit'])->middleware('auth');
+Route::put('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'update'])->middleware('auth');
+Route::delete('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'delete'])->middleware('auth');
 
-//Fetch
-Route::get('/Fetching', [App\Http\Controllers\IndexController::class, 'fetch']);
 
 //History
-Route::get('/MyHistory', [App\Http\Controllers\HistoryController::class, 'UserHistory']);
-Route::get('/allHistory', [App\Http\Controllers\HistoryController::class, 'History']);
-Route::post('/allHistory', [App\Http\Controllers\HistoryController::class, 'getHistory']);
+Route::get('/MyHistory', [App\Http\Controllers\HistoryController::class, 'UserHistory'])->middleware('auth');
+Route::get('/allHistory', [App\Http\Controllers\HistoryController::class, 'History'])->middleware('auth');
+Route::post('/allHistory', [App\Http\Controllers\HistoryController::class, 'getHistory'])->middleware('auth');
 //Create History
-Route::post('/allHistoryNew', [App\Http\Controllers\HistoryController::class, 'store']);
-Route::get('/allHistory/CreateHistory', [App\Http\Controllers\HistoryController::class, 'create']);
+Route::post('/allHistoryNew', [App\Http\Controllers\HistoryController::class, 'store'])->middleware('auth');
+Route::get('/allHistory/CreateHistory', [App\Http\Controllers\HistoryController::class, 'create'])->middleware('auth');
 //Update, Delete History
-Route::get('/allHistory/{History}/edit', [App\Http\Controllers\HistoryController::class, 'edit']);
-Route::put('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'update']);
-Route::delete('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'delete']);
+Route::get('/allHistory/{History}/edit', [App\Http\Controllers\HistoryController::class, 'edit'])->middleware('auth');
+Route::put('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'update'])->middleware('auth');
+Route::delete('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'delete'])->middleware('auth');
 
-
+//Archive
+Route::post('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'archive'])->middleware('auth');
+Route::get('/archive', [App\Http\Controllers\HistoryController::class, 'showarchive'])->middleware('auth');
+Route::post('/archive', [App\Http\Controllers\HistoryController::class, 'showclientarchive'])->middleware('auth');
+Route::delete('/archive/{Archive}', [App\Http\Controllers\HistoryController::class, 'deletearchive'])->middleware('auth');
 
 
 Auth::routes();
 
-//Show all Products And Show one by ID (Authenticated) And Logout
 Route::get('/', [App\Http\Controllers\IndexController::class ,'index']);
 Route::get('logout', [\App\Http\Controllers\Auth\LoginController::class , 'logout']);
-Route::get('/{Product}', [App\Http\Controllers\IndexController::class, 'show']);
 
 //Create Owner
 Route::post('/registow', [App\Http\Controllers\auth\RegisterOwnerController::class, 'store']);
 
-//Notifications for Purchase 
-Route::post('/cart' , [App\Http\Controllers\MailController::class, 'store']);
-Route::get('/cart/notifications', [App\Http\Controllers\MailController::class, 'show']);
 
 

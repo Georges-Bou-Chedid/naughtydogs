@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\History;
+use App\Models\Archive;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon;
 use App\Http\Requests\storeHistoryrequest;
 
 class HistoryController extends Controller
@@ -25,10 +27,12 @@ class HistoryController extends Controller
     public function History(){
         $history = History::orderBy('DueDate', 'asc')->get();
         $users = User::all();
+        $history1 = History::where('DueDate', '<=', Carbon::now()->addDays(4)->toDateTimeString())->get();
+        $history2 = History::where('DueDate', '<=', Carbon::now()->toDateTimeString())->get();
 
-        return view('Upgrade/AdminHistory' ,['histories' => $history],['users' => $users]);
-
+        return view('Upgrade/AdminHistory' ,['histories' => $history , 'histories1' => $history1 , 'histories2' => $history2 , 'users' => $users ]);
     }
+
     public function getHistory(){
         $getSelectValue = Request::input('username');
 
@@ -37,10 +41,12 @@ class HistoryController extends Controller
         }
         else{
         $history = History::where('user_id', $getSelectValue)->orderBy('DueDate', 'asc')->get();
+        $history1 = History::where('DueDate', '<=', Carbon::now()->addDays(4)->toDateTimeString())->get();
+        $history2 = History::where('DueDate', '<=', Carbon::now()->toDateTimeString())->get();
         $users = User::all();
         $users1 = User::where('id' , $getSelectValue)->get();
 
-        return view('Upgrade/History' ,['histories' => $history ,'users' => $users, 'users1' => $users1]);
+        return view('Upgrade/History' ,['histories' => $history ,'histories1' => $history1 , 'histories2' => $history2  , 'users' => $users, 'users1' => $users1]);
         }
 
     }
@@ -55,10 +61,15 @@ class HistoryController extends Controller
 
         $history = new History();
 
-        $history->user_id = request('createuser');
-        $history->title = request('title');
-        $history->Description = request('Description');
-        $history->DueDate = request('DueDate');
+        $history->user_id = $request->createuser;
+        $history->title = $request->title;
+        $history->Description = $request->Description;
+        $history->DueDate = $request->DueDate;
+        $history->Time = request('Time');
+
+        if ($history->Time == NULL){
+            $history->Time = "No Specific Time";
+        }
 
         $history->save();
 
@@ -72,14 +83,18 @@ class HistoryController extends Controller
         return view ('Upgrade/edithistory', ['history' => $history], ['users' => $users]);
     }
 
-    public function update($id){
+    public function update(storeHistoryrequest $request , $id){
         $history = History::find($id);
         
-        $history->user_id = request('createuser');
-        $history->title = request('title');
-        $history->Description = request('Description');
-        $history->DueDate = request('DueDate');
+        $history->user_id = $request->createuser;
+        $history->title = $request->title;
+        $history->Description = $request->Description;
+        $history->DueDate = $request->DueDate;
+        $history->Time = request('Time');
        
+        if ($history->Time == NULL){
+            $history->Time = "No Specific Time";
+        }
         $history->save();
 
         return redirect('/allHistory');
@@ -92,51 +107,50 @@ class HistoryController extends Controller
         return redirect('/allHistory');
     }
 
-    public function addToCart($id){
-        $product = Product::find($id);
-        if(!$product) {
-            abort(404);
+    public function showarchive(){
+        $archives = Archive::orderby('DueDate' , 'desc')->get();
+        $users = User::all();
+
+        return view ('archive' , ['archives' => $archives , 'users' => $users]);
+    }
+
+    public function showclientarchive(){
+        $getSelectValue = Request::input('username');
+
+        if($getSelectValue == auth()->user()->id){
+            return redirect('/archive');
         }
-        
-        $cart = Cart::where('user_id', auth()->id())->get();
+        else{
+        $archives = Archive::where('user_id', $getSelectValue)->orderBy('DueDate', 'desc')->get();
+        $users = User::all();
+        $users1 = User::where('id' , $getSelectValue)->get();
 
-        if($cart->isEmpty()){
-            $cart = Cart::create([
-                'user_id' => auth()->id(),
-                'product_id' => $product->id,
-                'Qty'=> 1,
-                'Price' => $product->Price,
-            ]);
-            return redirect('/')->with('success', 'Product added to cart successfully!');
+        return view('clientarchive' ,['archives' => $archives , 'users' => $users, 'users1' => $users1]);
         }
+    }
 
-        
-        if($userproduct = $cart->where('product_id' , $id)->first()){
+    public function deletearchive($id){
+        $archive = Archive::find($id);
+        $archive->delete();
 
-                
-                if($userproduct->Qty >= $product->Quantity){
-                    return redirect('/')->with('failure', 'Out Of Stock');
-                }
-               else{
-                $newquantity = $userproduct->Qty + 1;
+        return redirect('/archive');
+    
+    }
 
-                $userproduct->update([
-                    'Qty' => $newquantity,
-                    'Price' => $product->Price * $newquantity
-                ]);
+    public function archive($id){
+        $history = History::find($id);
+        $archives = new Archive();
 
-                return redirect('/')->with('success', 'Product added to cart successfully!');
-               }
-            }
+        $archives->user_id = $history->user_id;
+        $archives->title = $history->title;
+        $archives->Description = $history->Description;
+        $archives->DueDate = $history->DueDate;
+        $archives->Time = $history->Time;
 
-            else{
-                Cart::create([
-                    'user_id' => auth()->id(),
-                    'product_id' => $product->id,
-                    'Qty'=> 1,
-                    'Price' => $product->Price,
-                ]);
-                return redirect('/')->with('success', 'Product added to cart successfully!');
-        }
-            }
+        $archives->save();
+
+        $history->delete();
+        return redirect('/allHistory');
+    }
+    
 }
