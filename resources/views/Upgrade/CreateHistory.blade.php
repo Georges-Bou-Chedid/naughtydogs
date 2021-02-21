@@ -3,7 +3,7 @@
 @section('content')
 <div id="wrapper">
 	<div id="page" class="container">
-    <h1 class="heading has-text-weight-bold is-size-6">New History</h1>
+    <h1 class="heading has-text-weight-bold is-size-6">New Record</h1>
 
     <form method="POST" action="/allHistoryNew">
     @csrf
@@ -21,48 +21,6 @@
                 </span>
                 @enderror
                 
-            </div>
-        </div>
-
-
-        <div class="field">
-            <label class="label" for="Description">Description</label>
-
-            <div class="control">
-                <textarea class="textarea form-control @error('Description') is-invalid @enderror"
-                    name="Description" 
-                    id="Description"
-                    ></textarea>
-                @error('Description')
-                <span class="invalid-feedback" role="alert">
-                 <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-               
-            </div>
-        </div>
-
-        <div class="field">
-            <label for="DueDate">Due Date</label>
-
-            <div class="control">
-            <input class="form-control @error('DueDate') is-invalid @enderror" type="date" name="DueDate">
-            @error('DueDate')
-                <span class="invalid-feedback" role="alert">
-                 <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
-
-        <div class="field">
-            <label for="Time">Time</label>
-
-            <div class="control">
-                <input class="form-control"  
-                    type="text"
-                    name="Time" 
-                    ></input>  
             </div>
         </div>
 

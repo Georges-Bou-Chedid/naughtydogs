@@ -48,12 +48,15 @@ class LoginController extends Controller
 
 protected function attemptLogin(Request $request)
 {
-        
-    $user = User::where('email', $request->email)
+    
+    $user = User::where('phone', $request->phone)
                      ->where('password', $request->password)
                      ->first();
 
     if(!isset($user)){
+        return false;
+    }
+    if($user->status == false){
         return false;
     }
     

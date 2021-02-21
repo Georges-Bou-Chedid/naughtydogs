@@ -6,7 +6,7 @@ use App\Models\Pricinglist;
 use App\Models\User;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Auth;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\storePlanrequest;
 
@@ -17,6 +17,7 @@ class IndexController extends Controller
     */
     public function index(){
         $pricing = Pricinglist::latest()->get();
+        $users = User::all();
         if(!auth()->user()){
             return view ('Roles/welcome', ['pricing' => $pricing]);
         }
@@ -24,8 +25,43 @@ class IndexController extends Controller
         if(auth()->user()->role == User::MEMBER){
             return view('Roles/Member' ,['pricing' => $pricing]);
              }
-        return view('Roles/Admin',['pricing' => $pricing]);
+        return view('Roles/Admin',['pricing' => $pricing], ['users' => $users]);
         }
+
+        public function getUser(){
+            $getSelectValue = Request::input('username');
+    
+            if($getSelectValue == auth()->user()->id){
+                return redirect('/');
+            }
+            else{
+            $users = User::where('id' , $getSelectValue)->first();
+            if($users->status == true){
+            $users->status = false;
+            $users->save();
+            return redirect('/')->with('disabled' , 'Disabled');
+            }
+            else{
+                $users->status = true;
+                $users->save();
+                return redirect('/')->with('enabled' , 'Enabled');
+            }
+        
+            }
+        }
+
+        public function deleteUser(){
+            $getSelectValue = Request::input('username1');
+
+            if($getSelectValue == auth()->user()->id){
+                return redirect('/');
+            }
+            else{
+            $users = User::where('id' , $getSelectValue)->first();
+            $users->delete();
+            return redirect('/')->with('delete' , 'Deleted');
+        }
+    }
     
 
     public function create(){

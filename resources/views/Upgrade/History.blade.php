@@ -5,8 +5,8 @@
 <div class="title" style="text-align:center;">
 
 <div class=row>
-  <h1 class="col-sm-7" style="margin-left:270px">History</h1>
-  <p class="col-md-2 text-md-right"><a href="/allHistory/CreateHistory" class="btn btn-dark btn-outline-light text-md-right">Create History</a>
+  <h1 class="col-sm-7" style="margin-left:270px">Records</h1>
+  <p class="col-md-2 text-md-right"><a href="/allHistory/CreateHistory" class="btn btn-dark btn-outline-light text-md-right">Create Record</a>
 </div>
 
    <p style="margin-top:20px"> <label for="user" class="font-weight-bold">Choose a Client:</label></p>
@@ -33,50 +33,39 @@
 <div class="row">
 @foreach ($histories as $history)
 
-<div class="pricing-column col-lg-6   col-md-6">
+<div class="pricing-column col-lg-8">
+  
 
 @foreach ($histories1 as $history1)
     @if($history->id == $history1->id)
-   <span style="color:red;">
+   <span style="color:red">
    @endif
    @endforeach
 
-@foreach ($histories2 as $history2)
+   @foreach ($histories2 as $history2)
     @if($history->id == $history2->id)
-   <span style="color:green;">
-   <p style="color:green; margin-left:200px" class="display-"><strong>Completed!!</strong>
-   <form method="POST" action="/allHistory/{{ $history->id }}">
-   @csrf
-   <button class="btn btn-dark btn-outline-light" style="margin-bottom:10px; margin-left:205px">Archive</button>
-  </form>
+   <spam style="color:black">
    @endif
    @endforeach
 
    <span style = "font-weight:bold">
   <div class="card">
-  <div class="card-header">
+  <div class="card-link">
     <table><tr>
-    <td class="col-12"><h3><strong>{{$history->title}}</h3></strong></td>
-  <td><a href="/allHistory/{{ $history->id }}/edit" class="btn btn-dark btn-outline-light">Edit</a></td>
+    <td class="col-6"><h3><strong>{{$history->title}} / {{$history->user->name}}</h3></strong></td>
+    <td><a href="/allHistory/{{ $history->id }}/edit" class="btn btn-info">Change</a></td>
+ 
   <td><form method="POST" action="/allHistory/{{ $history->id }}">
             @csrf
             @method('DELETE')
-            <button class="btn btn-dark btn-outline-light" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+            <button class="btn btn-danger btn-outline-light" type="submit" onclick="return confirm('Are you sure?')">Delete</button>
             </form></td></tr>
 </table>
   </div>
-  <div class="card-body">
-    <p>Name: {{$history->user->name}}</p>
-    <p>Description: {{$history->Description}}</p>
-    <p>Due Date: {{$history->DueDate}} </p>
-    <p>Time: {{$history->Time}}</p>
-
-  </div>
-</div>
 </div>
 </span>
 </span>
-    
-
+</span> 
+</div>
 @endforeach
 @endsection

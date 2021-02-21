@@ -4,9 +4,66 @@
 <section id="title">
   <div class="container-fluid">
     <!-- Title -->
+ 
 
     <div class="row">
       <div class="col-lg-6">
+
+    <!--edit user -->
+      <form action="/editUser" method="POST">
+   @csrf
+    <select name="username" id="username" class=" select2 form-control1">
+        @foreach($users as $user)
+            @if($user->id == auth()->user()->id)
+            <option value="{{$user->id}}">Admin</option>
+            @else
+            <option value="{{$user->id}}">{{$user->name}}</option>
+            @endif
+        @endforeach
+    </select>
+  
+    <input type="submit" name="submit" value="Disable/Enable Client">
+    </form>
+
+    @if(session('disabled'))
+    <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{ session('disabled')}}
+</div>
+        @endif
+
+        @if(session('enabled'))
+    <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{ session('enabled')}}
+</div>
+        @endif
+
+        <form action="/DeleteUser" method="POST">
+   @csrf
+    <select name="username1" id="username1" class=" select2 form-control1">
+        @foreach($users as $user)
+            @if($user->id == auth()->user()->id)
+            <option value="{{$user->id}}">Admin</option>
+            @else
+            <option value="{{$user->id}}">{{$user->name}}</option>
+            @endif
+        @endforeach
+    </select>
+  
+    <input type="submit" name="submit"  onclick="return confirm('Are you sure?')" value="Delete Client">
+    </form>
+
+    @if(session('delete'))
+    <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{ session('delete')}}
+</div>
+        @endif
+
+
+
+  <!-- Design -->
 
       <h1 class="Big-Heading">Meet new and interesting dogs nearby.</h1>
 

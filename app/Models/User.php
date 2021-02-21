@@ -22,6 +22,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'status',
+        'phone'
     ];
 
     /**
@@ -41,11 +43,12 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        
+        'status' => 'boolean'
     ];
 
     public const MEMBER = 1;
     public const ADMIN = 2;
+
     
     public function history(){
         return $this->hasMany(History::class);

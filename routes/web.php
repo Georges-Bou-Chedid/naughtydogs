@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::get('/registerOwner', [App\Http\Controllers\auth\RegisterOwnerController::class, 'create']);
-
 //Create Plan
 Route::post('/', [App\Http\Controllers\IndexController::class, 'store'])->middleware('auth');
 Route::get('/CreatePlan', [App\Http\Controllers\IndexController::class, 'create'])->middleware('auth');
@@ -25,6 +23,9 @@ Route::get('/{Pricinglist}/edit', [App\Http\Controllers\IndexController::class, 
 Route::put('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'update'])->middleware('auth');
 Route::delete('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'delete'])->middleware('auth');
 
+//edit user
+Route::post('/editUser', [App\Http\Controllers\IndexController::class, 'getUser'])->middleware('auth');
+Route::post('/DeleteUser', [App\Http\Controllers\IndexController::class, 'deleteUser'])->middleware('auth');
 
 //History
 Route::get('/MyHistory', [App\Http\Controllers\HistoryController::class, 'UserHistory'])->middleware('auth');
@@ -33,25 +34,16 @@ Route::post('/allHistory', [App\Http\Controllers\HistoryController::class, 'getH
 //Create History
 Route::post('/allHistoryNew', [App\Http\Controllers\HistoryController::class, 'store'])->middleware('auth');
 Route::get('/allHistory/CreateHistory', [App\Http\Controllers\HistoryController::class, 'create'])->middleware('auth');
-//Update, Delete History
+//Update, Delete Record
 Route::get('/allHistory/{History}/edit', [App\Http\Controllers\HistoryController::class, 'edit'])->middleware('auth');
 Route::put('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'update'])->middleware('auth');
 Route::delete('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'delete'])->middleware('auth');
-
-//Archive
-Route::post('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'archive'])->middleware('auth');
-Route::get('/archive', [App\Http\Controllers\HistoryController::class, 'showarchive'])->middleware('auth');
-Route::post('/archive', [App\Http\Controllers\HistoryController::class, 'showclientarchive'])->middleware('auth');
-Route::delete('/archive/{Archive}', [App\Http\Controllers\HistoryController::class, 'deletearchive'])->middleware('auth');
-
 
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\IndexController::class ,'index']);
 Route::get('logout', [\App\Http\Controllers\Auth\LoginController::class , 'logout']);
 
-//Create Owner
-Route::post('/registow', [App\Http\Controllers\auth\RegisterOwnerController::class, 'store']);
 
 
 
