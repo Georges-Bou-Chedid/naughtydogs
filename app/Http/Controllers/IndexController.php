@@ -65,7 +65,7 @@ class IndexController extends Controller
     
 
     public function create(){
-        return view('Upgrade/CreatePlan');
+        return view('Pricing/CreatePlan');
     }
 
     public function store(Request $request){
@@ -107,7 +107,7 @@ class IndexController extends Controller
 
     public function edit($id){
         $pricing = Pricinglist::find($id);
-        return view ('Upgrade/editpricing', ['pricing' => $pricing]);
+        return view ('Pricing/editpricing', ['pricing' => $pricing]);
     }
 
     public function update(Request $request , $id){

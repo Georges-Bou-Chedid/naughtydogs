@@ -20,7 +20,7 @@ class HistoryController extends Controller
             return redirect('/')->with('Historyempty', 'Sorry No History Found!!');
         }
 
-        return view('Upgrade/UserHistory' ,['histories' => $history]);
+        return view('UpgradeHistory/UserHistory' ,['histories' => $history]);
 
     }
 
@@ -30,7 +30,7 @@ class HistoryController extends Controller
         $history1 = History::where('DueDate', '<=', Carbon::now()->addDays(4)->toDateTimeString())->get();
         $history2 = History::where('DueDate', '<=', Carbon::now()->subDays(1)->toDateTimeString())->get();
 
-        return view('Upgrade/AdminHistory' ,['histories' => $history , 'histories1' => $history1 , 'histories2' => $history2 , 'users' => $users ]);
+        return view('UpgradeHistory/AdminHistory' ,['histories' => $history , 'histories1' => $history1 , 'histories2' => $history2 , 'users' => $users ]);
     }
 
     public function getHistory(){
@@ -46,14 +46,14 @@ class HistoryController extends Controller
         $users = User::all();
         $users1 = User::where('id' , $getSelectValue)->get();
 
-        return view('Upgrade/History' ,['histories' => $history ,'histories1' => $history1 , 'histories2' => $history2  , 'users' => $users, 'users1' => $users1]);
+        return view('UpgradeHistory/History' ,['histories' => $history ,'histories1' => $history1 , 'histories2' => $history2  , 'users' => $users, 'users1' => $users1]);
         }
 
     }
 
     public function create(){
         $users = User::all();
-        return view('Upgrade/CreateHistory', ['users' => $users]);
+        return view('UpgradeHistory/CreateHistory', ['users' => $users]);
     }
 
     public function store(storeHistoryrequest $request){
