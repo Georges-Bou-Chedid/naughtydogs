@@ -8,6 +8,7 @@ use Illuminate\Http\Response;
 use App\Http\Controllers\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\storeUserequest;
 use App\Http\Requests\storePlanrequest;
 
 class IndexController extends Controller
@@ -27,6 +28,7 @@ class IndexController extends Controller
              }
         return view('Roles/Admin',['pricing' => $pricing], ['users' => $users]);
         }
+
 
         public function getUser(){
             $getSelectValue = Request::input('username');
@@ -68,17 +70,9 @@ class IndexController extends Controller
         return view('Pricing/CreatePlan');
     }
 
-    public function store(Request $request){
-
-        $request->validate([
-            'title' => 'required',
-        ]);
+    public function store(storePlanrequest $request){
 
         if ($request->hasFile('file')) {
-
-            $request->validate([
-                'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]);
 
             $image = $request->file('file');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -110,19 +104,12 @@ class IndexController extends Controller
         return view ('Pricing/editpricing', ['pricing' => $pricing]);
     }
 
-    public function update(Request $request , $id){
+    public function update(storePlanrequest $request , $id){
 
         $pricing = Pricinglist::find($id);
-        
-        $request->validate([
-            'title' => 'required',
-        ]);
 
         if ($request->hasFile('file')) {
 
-            $request->validate([
-                'file' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]);
 
             $image = $request->file('file');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();

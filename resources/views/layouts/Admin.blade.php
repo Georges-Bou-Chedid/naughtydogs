@@ -59,6 +59,10 @@
         </li>
 
         <li class="nav-item">
+        <a class="nav-link" href="/registernewclient">Register New Client</a>
+         </li>  
+
+        <li class="nav-item">
           <a class="nav-link" href="/allHistory">History</a>
         </li>
 
@@ -70,10 +74,7 @@
                                 </li>
                             @endif
                             
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                            @if (Route::has('register'))   
                             @endif
                         @else
                             <li class="nav-item dropdown">
@@ -109,6 +110,22 @@
         $(document).ready(function() {
         $('.select2').select2();
         }); 
+    </script>  
+    <script> 
+    $(document).ready(function(){
+     $("#btn-down").click(function(){
+      $(".slideDiv").slideDown("slow");
+        });
+    });
     </script>
+    <script> 
+    $(document).ready(function(){
+    $("#btn-up").click(function(){
+    $(".slideDiv").slideUp("slow")
+    });
+    });
+
+    
+</script>
 </body>
 </html>

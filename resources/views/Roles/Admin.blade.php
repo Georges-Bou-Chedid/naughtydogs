@@ -10,7 +10,7 @@
       <div class="col-lg-6">
 
     <!--edit user -->
-      <form action="/editUser" method="POST">
+      <form action="/enableUser" method="POST">
    @csrf
     <select name="username" id="username" class=" select2 form-control1">
         @foreach($users as $user)
@@ -39,6 +39,8 @@
 </div>
         @endif
 
+
+
         <form action="/DeleteUser" method="POST">
    @csrf
     <select name="username1" id="username1" class=" select2 form-control1">
@@ -58,6 +60,30 @@
     <div class="alert">
   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
   {{ session('delete')}}
+</div>
+        @endif
+
+
+    
+        <form action="/editUser" method="GET">
+   @csrf
+    <select name="username2" id="username2" class=" select2 form-control1">
+        @foreach($users as $user)
+            @if($user->id == auth()->user()->id)
+            <option value="{{$user->id}}">Admin</option>
+            @else
+            <option value="{{$user->id}}">{{$user->name}}</option>
+            @endif
+        @endforeach
+    </select>
+  
+    <input type="submit" name="submit"  value="Edit Client">
+    </form>
+
+    @if(session('edit'))
+    <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+  {{ session('edit')}}
 </div>
         @endif
 
@@ -167,7 +193,7 @@
   <h3>{{$pricings->title}}</h3>
   </div>
   <div class="card-body">
-    <h2 class="prices"><img src = "assets/images/{{$pricings->img}}"></h2>
+    <h2 class="prices"><img src = "assets/images/{{$pricings->img}}" class="img-responsive"></h2>
     <p>{{$pricings->Description}}</p>
     <a href="/{{ $pricings->id }}/edit" class="btn btn-dark btn-outline-light">Edit</a>
     <form method="POST" action="/{{ $pricings->id }}" >

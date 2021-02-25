@@ -24,20 +24,29 @@ Route::put('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'upda
 Route::delete('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'delete'])->middleware('auth');
 
 //edit user
-Route::post('/editUser', [App\Http\Controllers\IndexController::class, 'getUser'])->middleware('auth');
-Route::post('/DeleteUser', [App\Http\Controllers\IndexController::class, 'deleteUser'])->middleware('auth');
+Route::post('/enableUser', [App\Http\Controllers\IndexController::class, 'getUser'])->middleware('auth');;
+Route::post('/DeleteUser', [App\Http\Controllers\IndexController::class, 'deleteUser'])->middleware('auth');;
+Route::get('/editUser', [App\Http\Controllers\Auth\RegisterController::class, 'geteditUser'])->middleware('auth');;
+Route::put('/editUser/{User}', [App\Http\Controllers\Auth\RegisterController::class, 'storeUser'])->middleware('auth');;
 
 //History
-Route::get('/MyHistory', [App\Http\Controllers\HistoryController::class, 'UserHistory'])->middleware('auth');
-Route::get('/allHistory', [App\Http\Controllers\HistoryController::class, 'History'])->middleware('auth');
-Route::post('/allHistory', [App\Http\Controllers\HistoryController::class, 'getHistory'])->middleware('auth');
+Route::get('/MyHistory', [App\Http\Controllers\HistoryController::class, 'UserHistory'])->middleware('auth');;
+Route::get('/allHistory', [App\Http\Controllers\HistoryController::class, 'History'])->middleware('auth');;
+Route::post('/allHistory', [App\Http\Controllers\HistoryController::class, 'getHistory'])->middleware('auth');;
 //Create History
-Route::post('/allHistoryNew', [App\Http\Controllers\HistoryController::class, 'store'])->middleware('auth');
-Route::get('/allHistory/CreateHistory', [App\Http\Controllers\HistoryController::class, 'create'])->middleware('auth');
+Route::post('/allHistoryNew', [App\Http\Controllers\HistoryController::class, 'store'])->middleware('auth');;
+Route::get('/allHistory/CreateHistory', [App\Http\Controllers\HistoryController::class, 'create'])->middleware('auth');;
 //Update, Delete Record
-Route::get('/allHistory/{History}/edit', [App\Http\Controllers\HistoryController::class, 'edit'])->middleware('auth');
-Route::put('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'update'])->middleware('auth');
-Route::delete('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'delete'])->middleware('auth');
+Route::get('/allHistory/{History}/edit', [App\Http\Controllers\HistoryController::class, 'edit'])->middleware('auth');;
+Route::put('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'update'])->middleware('auth');;
+Route::delete('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'delete'])->middleware('auth');;
+
+//PET
+Route::post('/{Pet}', [App\Http\Controllers\PetController::class, 'store'])->middleware('auth');;
+
+//Register
+Route::get('/registernewclient' , [App\Http\Controllers\Auth\RegisterController::class, 'registerview'])->middleware('auth');;
+Route::post('/registernewclient' , [App\Http\Controllers\Auth\RegisterController::class, 'create'])->middleware('auth');;
 
 Auth::routes();
 

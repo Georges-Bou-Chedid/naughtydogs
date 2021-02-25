@@ -73,9 +73,8 @@ class HistoryController extends Controller
 
 
     public function edit($id){
-        $users = User::all();
         $history = History::find($id);
-        return view ('SectionRecord/edithistory', ['history' => $history], ['users' => $users]);
+        return view ('SectionRecord/edithistory', ['history' => $history]);
     }
 
     public function update(storeHistoryrequest $request , $id){

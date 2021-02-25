@@ -100,7 +100,7 @@
 <p>Simple plans for your Pet.</p>
 
 
-    <div class="row">
+<div class="row">
     @foreach ($pricing as $pricings)
 <div class="pricing-column col-lg-4   col-md-6">
 
@@ -109,9 +109,8 @@
   <h3>{{$pricings->title}}</h3>
   </div>
   <div class="card-body">
-    <h2 class="prices">{{$pricings->img}}</h2>
+    <h2 class="prices"><img src = "assets/images/{{$pricings->img}}" class="img-responsive"></h2>
     <p>{{$pricings->Description}}</p>
-    
   </div>
 </div>
 </div>

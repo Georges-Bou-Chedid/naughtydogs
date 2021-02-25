@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Request;
+use App\Http\Requests\storeUserequest;
+use App\Http\Requests\storeupdateuserrequest;
 
 class RegisterController extends Controller
 {
@@ -26,19 +29,17 @@ class RegisterController extends Controller
 
     /**
      * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = ('/');
-
-    /**
      * Create a new controller instance.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
+    }
+
+    public function registerview(){
+        return view('auth/register');
     }
 
     /**
@@ -47,15 +48,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'phone' => ['required' , 'string' , 'min:8' , 'max:8' , 'unique:users']
-        ]);
-    }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -63,15 +56,53 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(storeUserequest $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'phone' => $data['phone'],
-            'role' => User::MEMBER,
-            'status' => true
-        ]);
+
+        $users = new User();
+
+        $users->name = $request->name;
+        $users->email = $request->email;
+        $users->password =$request->password;
+        $users->role = User::MEMBER;
+        $users->phone = $request->phone;
+        $users->Referal = request('Referal');
+        $users->PreviousVet = request('PreviousVet');
+        $users->address = request('address');
+        $users->ContactPref = request('ContactPref');
+        $users->status = true;
+
+        $users->save();
+
+        return redirect('/');
+    
+    }
+
+    public function geteditUser(){
+        $getSelectValue = Request::input('username2');
+        $users = User::where('id' , $getSelectValue)->first();
+
+     return view('auth/editregister' , ['users' => $users]);
+    }   
+
+    public function storeUser(storeupdateuserrequest $request , $id){
+
+        $users = User::find($id);
+
+        $users->name = $request->name;
+        $users->email = $request->email;
+         $users->password =$request->password;
+        $users->role = User::MEMBER;
+        $users->phone = $request->phone;
+        $users->Referal = request('Referal');
+        $users->PreviousVet = request('PreviousVet');
+        $users->address = request('address');
+        $users->ContactPref = request('ContactPref');
+        $users->status = true;
+
+        $users->save();
+
+        return redirect('/')->With('edit' , 'Client Edited Successfully');
+       
     }
 }

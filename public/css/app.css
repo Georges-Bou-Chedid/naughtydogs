@@ -1930,6 +1930,7 @@ pre code {
   border-color: #b3d7f5;
 }
 
+
 .table-hover .table-info:hover {
   background-color: #c0ddf6;
 }
@@ -4970,6 +4971,8 @@ input[type=button].btn-block {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
+
+
 
 .card > hr {
   margin-right: 0;

@@ -19,6 +19,11 @@ class CreateHistoriesTable extends Migration
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
+
+            $table->foreignId('pets_id')
+            ->references('id')
+            ->on('pets')
+            ->onDelete('cascade');
             $table->string('title');
             $table->date('DueDate')->nullable();
             $table->timestamps();
