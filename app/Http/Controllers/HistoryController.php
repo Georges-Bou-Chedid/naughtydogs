@@ -32,7 +32,7 @@ class HistoryController extends Controller
     }
 
     public function History(){
-        $history = History::orderBy('DueDate', 'asc')->get();
+        $history = History::orderBy('DueDate', 'desc')->get();
         $users = User::all();
         $history1 = History::where('DueDate', '<=', Carbon::now()->addDays(4)->toDateTimeString())->get();
         $history2 = History::where('DueDate', '<=', Carbon::now()->subDays(1)->toDateTimeString())->get();
@@ -47,7 +47,7 @@ class HistoryController extends Controller
             return redirect('/allHistory');
         }
         else{
-        $history = History::where('user_id', $getSelectValue)->orderBy('DueDate', 'asc')->get();
+        $history = History::where('user_id', $getSelectValue)->orderBy('DueDate', 'desc')->get();
         $history1 = History::where('DueDate', '<=', Carbon::now()->addDays(4)->toDateTimeString())->get();
         $history2 = History::where('DueDate', '<=', Carbon::now()->toDateTimeString())->get();
         $users = User::all();
@@ -95,43 +95,96 @@ class HistoryController extends Controller
             $pets->history_id = $history->id;
             $pets->save();
         }
-        if($vaccine->isEmpty()){
+       if($vaccine->isEmpty()){
             $vaccine = new Vaccine();
             $vaccine->history_id = $history->id;
             $vaccine->save();
         }
-       if($deworming->isEmpty()){
+     if($deworming->isEmpty()){
             $deworming = new Deworming();
             $deworming->history_id = $history->id;
             $deworming->save();
         }
-         if($annualvaccin->isEmpty()){
+      if($annualvaccin->isEmpty()){
             $annualvaccin = new Annualvaccin();
             $annualvaccin->history_id = $history->id;
             $annualvaccin->save();
         }
-        if($tridewor->isEmpty()){
+       if($tridewor->isEmpty()){
             $tridewor = new Tridewor();
             $tridewor->history_id = $history->id;
             $tridewor->save();
         }
-       if($kyste->isEmpty()){
+      if($kyste->isEmpty()){
             $kyste = new Kyste();
             $kyste->history_id = $history->id;
             $kyste->save();
         }
-        if($monthly->isEmpty()){
+       if($monthly->isEmpty()){
             $monthly = new Monthly();
             $monthly->history_id = $history->id;
             $monthly->save();
         }
-        if($previous->isEmpty()){
+      if($previous->isEmpty()){
             $previous = new Previous();
             $previous->history_id = $history->id;
             $previous->save();
         }
 
-        return view ('SectionRecord/editpet', ['history' => $history , 'pets' => $pets , 'vaccine' => $vaccine , 
+        $vaccine1 = Vaccine::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->get();
+        $deworming1 = Deworming::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->get();
+        $annualvaccin1 = Annualvaccin::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->get();
+        $tridewor1 = Tridewor::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->get();
+        $kyste1 = Kyste::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->get();
+        $monthly1 = Monthly::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->get();
+        $previous1 = Previous::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->get();
+
+       /* foreach($vaccine1 as $vaccines1){
+            if($vaccines1 != NULL){
+                $history->DueDate = $vaccines1->Date;
+                $history->save();
+                }
+                else if($vaccines1->isEmpty()){
+                    $history->DueDate =NULL;
+                $history->save();
+                }
+            }
+        foreach($deworming1 as $dewormings1){
+            if($dewormings1 != NULL){
+                $history->DueDate = $dewormings1->Date;
+                $history->save();
+            }
+        }
+        foreach($annualvaccin1 as $annualvaccins1){
+        }
+        foreach($tridewor1 as $tridewors1){
+        }
+        foreach($kyste1 as $kystes1){
+        }
+        foreach($monthly1 as $monthlys1){
+        }
+        foreach($previous1 as $previouses1){
+        }*/
+
+        return view ('SectionRecord/editpet', ['history' => $history , 'pets' => $pets , 'vaccine' => $vaccine , 'vaccine1' => $vaccine1 ,
+        'deworming' => $deworming, 'deworming1' => $deworming1 , 'annualvaccin' => $annualvaccin , 'annualvaccin1' => $annualvaccin1 ,'tridewor' => $tridewor , 'tridewor1' => $tridewor1 , 'kyste' => $kyste 
+        , 'kyste1' => $kyste1 , 'monthly' => $monthly ,'monthly1' => $monthly1
+        , 'previous' => $previous , 'previous1' => $previous1]);
+        
+    }
+
+    public function look($id){
+        $history = History::find($id);
+        $pets = $history->pet;
+        $vaccine = $history->vaccine;
+        $deworming = $history->deworming;
+        $annualvaccin = $history->annualvaccin;
+        $tridewor = $history->tridewor;
+        $kyste = $history->kyste;
+        $monthly = $history->monthly;
+        $previous = $history->previous;
+
+        return view ('SectionRecord/lookpet', ['history' => $history , 'pets' => $pets , 'vaccine' => $vaccine , 
         'deworming' => $deworming, 'annualvaccin' => $annualvaccin , 'tridewor' => $tridewor , 'kyste' => $kyste , 'monthly' => $monthly 
         , 'previous' => $previous]);
         

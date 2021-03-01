@@ -14,7 +14,7 @@
   <div class="card-link">
     <table><tr>
     <td class="col-2"><h3><strong>{{$history->title}} / {{$history->user->name}}</h3></strong></td>
-    <td><a href="/allHistory/{{ $history->id }}/edit" class="btn btn-info">Look</a></td>
+    <td><a href="/allHistory/{{ $history->id }}/look" class="btn btn-info">Look</a></td>
     </tr>
 </table>
   </div>

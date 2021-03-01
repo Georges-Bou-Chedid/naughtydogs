@@ -101,11 +101,12 @@
 
                             <div class="col-md-6">
                             <select class="form-control" id="ContactPref" name="ContactPref" value="" required focus>
-                            <option value="NULL"></option>
-                            <option value="Call">Call</option>        
-                            <option value="Wapp">Wapp</option>
-                            <option value="SMS">SMS</option>
+                            <option value="">--Select--</option>
+                            <option value="Call"  {{ ($users->ContactPref) == 'Call' ? 'selected' : '' }}>Call</option>        
+                            <option value="Wapp" {{ ($users->ContactPref) == 'Wapp' ? 'selected' : '' }}>Wapp</option>
+                            <option value="SMS" {{ ($users->ContactPref) == 'SMS' ? 'selected' : '' }}>SMS</option>
                            </select>
+                           
                             
                             </div>
                         </div>

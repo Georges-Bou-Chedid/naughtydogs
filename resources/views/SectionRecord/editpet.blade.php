@@ -163,7 +163,11 @@
                  <option value="Merial" {{ ($vaccines->Brand) == 'Merial' ? 'selected' : '' }}>Merial</option>
                  <option value="Nobivac" {{ ($vaccines->Brand) == 'Nobivac' ? 'selected' : '' }}>Nobivac</option>
                  </select></td>
-                 <td class="tablessection3"> <input type ="date" value="{{$vaccines->Date}}" name="Date"></td>
+
+                 
+                
+                 <td class="tablessection3"> <input type ="date" value="{{$vaccines->Date}}" name="Date"@foreach ($vaccine1 as $vaccines1) @if($vaccines->id == $vaccines1->id) style="color:red" @endif @endforeach</td>
+                 
                  <td class="tablessection3"> <input type ="Number" placeholder="Kg" value="{{$vaccines->Weight}}" name="Weight"></td>
                  <td><button class="white" type="submit"><i class="far fa-save icon1"></i></button></td>
                  </form>
@@ -215,7 +219,7 @@
                  <option value="Merial" {{ ($dewormings->Brand) == 'Merial' ? 'selected' : '' }}>Merial</option>
                  <option value="Nobivac" {{ ($dewormings->Brand) == 'Nobivac' ? 'selected' : '' }}>Nobivac</option>
                  </select></td>
-                 <td class="tablessection3"> <input type ="date" value="{{$dewormings->Date}}" name="Date"></td>
+                 <td class="tablessection3"> <input type ="date" value="{{$dewormings->Date}}" name="Date" @foreach ($deworming1 as $dewormings1) @if($dewormings->id == $dewormings1->id) style="color:red" @endif @endforeach></td>
                  <td class="tablessection3"> <input type ="Number" placeholder="Kg" value="{{$dewormings->Weight}}" name="Weight"></td>
                  <td><button class="white" type="submit"><i class="far fa-save icon1"></i></button></td>
                  </form>
@@ -268,7 +272,7 @@
                  <option value="Merial" {{ ($annualvaccins->Brand) == 'Merial' ? 'selected' : '' }}>Merial</option>
                  <option value="Nobivac" {{ ($annualvaccins->Brand) == 'Nobivac' ? 'selected' : '' }}>Nobivac</option>
                  </select></td>
-                 <td class="tablessection3"> <input type ="date" value="{{$annualvaccins->Date}}" name="Date"></td>
+                 <td class="tablessection3"> <input type ="date" value="{{$annualvaccins->Date}}" name="Date" @foreach ($annualvaccin1 as $annualvaccins1) @if($annualvaccins->id == $annualvaccins1->id) style="color:red" @endif @endforeach></td>
                  <td class="tablessection3"> <input type ="Number" placeholder="Kg" value="{{$annualvaccins->Weight}}" name="Weight"></td>
                  <td><button class="white" type="submit"><i class="far fa-save icon1"></i></button></td>
                  </form>
@@ -315,7 +319,7 @@
                  <option value="Merial" {{ ($tridewors->Brand) == 'Merial' ? 'selected' : '' }}>Merial</option>
                  <option value="Nobivac" {{ ($tridewors->Brand) == 'Nobivac' ? 'selected' : '' }}>Nobivac</option>
                  </select></td>
-                 <td class="tablessection3"> <input type ="date" value="{{$tridewors->Date}}" name="Date"></td>
+                 <td class="tablessection3"> <input type ="date" value="{{$tridewors->Date}}" name="Date" @foreach ($tridewor1 as $tridewors1) @if($tridewors->id == $tridewors1->id) style="color:red" @endif @endforeach></td>
                  <td class="tablessection3"> <input type ="Number" placeholder="Kg" value="{{$tridewors->Weight}}" name="Weight"></td>
                  <td><button class="white" type="submit"><i class="far fa-save icon1"></i></button></td>
                  </form>
@@ -361,7 +365,7 @@
                  <option value="Merial" {{ ($kystes->Brand) == 'Merial' ? 'selected' : '' }}>Merial</option>
                  <option value="Nobivac" {{ ($kystes->Brand) == 'Nobivac' ? 'selected' : '' }}>Nobivac</option>
                  </select></td>
-                 <td class="tablessection3"> <input type ="date" value="{{$kystes->Date}}" name="Date"></td>
+                 <td class="tablessection3"> <input type ="date" value="{{$kystes->Date}}" name="Date" @foreach ($kyste1 as $kystes1) @if($kystes->id == $kystes1->id) style="color:red" @endif @endforeach></td>
                  <td class="tablessection3"> <input type ="Number" placeholder="Kg" value="{{$kystes->Weight}}" name="Weight"></td>
                  <td><button class="white" type="submit"><i class="far fa-save icon1"></i></button></td>
                  </form>
@@ -407,7 +411,7 @@
                  <option value="Merial" {{ ($monthlys->Brand) == 'Merial' ? 'selected' : '' }}>Merial</option>
                  <option value="Nobivac" {{ ($monthlys->Brand) == 'Nobivac' ? 'selected' : '' }}>Nobivac</option>
                  </select></td>
-                 <td class="tablessection3"> <input type ="date" value="{{$monthlys->Date}}" name="Date"></td>
+                 <td class="tablessection3"> <input type ="date" value="{{$monthlys->Date}}" name="Date" @foreach ($monthly1 as $monthlys1) @if($monthlys->id == $monthlys1->id) style="color:red" @endif @endforeach></td>
                  <td class="tablessection3"> <input type ="Number" placeholder="Kg" value="{{$monthlys->Weight}}" name="Weight"></td>
                  <td><button class="white" type="submit"><i class="far fa-save icon1"></i></button></td>
                  </form>
@@ -450,7 +454,7 @@
                  @method('PUT')
 
                 
-                 <tr><td class="tablessection3"> <input type ="date" value="{{$previouses->Date}}" name="Date"></td>
+                 <tr><td class="tablessection3"> <input type ="date" value="{{$previouses->Date}}" name="Date" @foreach ($previous1 as $previouses1) @if($previouses->id == $previouses1->id) style="color:red" @endif @endforeach></td>
                  <td class="tablessection3"><input id="Case" size="6" name="Case" placeholder="case" value="{{$previouses->Case}}"></input></td>
                  <td class="tablessection3"><input id="Procedure" size="9" name="Procedure" placeholder="procedure" value="{{$previouses->Procedure}}"></input></td>
                  <td class="tablessection3"><input id="Treatment" size="8" name="Treatment" placeholder="treatment" value="{{$previouses->Treatment}}"></input></td>

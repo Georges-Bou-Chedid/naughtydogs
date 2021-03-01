@@ -101,7 +101,7 @@
 
                             <div class="col-md-6">
                             <select class="form-control" id="ContactPref" name="ContactPref" required focus>
-                            <option value="NULL"></option>
+                            <option value="">--Select--</option>
                             <option value="Call">Call</option>        
                             <option value="Wapp">Wapp</option>
                             <option value="SMS">SMS</option>

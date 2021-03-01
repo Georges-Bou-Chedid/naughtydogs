@@ -53,7 +53,7 @@
   <div class="card-link">
     <table><tr>
     <td class="col-6"><h3><strong>{{$history->title}} / {{$history->user->name}}</h3></strong></td>
-    <td><a href="/allHistory/{{ $history->id }}/edit" class="btn btn-info">Change</a></td>
+    <td><a href="/allHistory/{{ $history->id }}/editpet" class="btn btn-info">Change</a></td>
  
   <td><form method="POST" action="/allHistory/{{ $history->id }}">
             @csrf

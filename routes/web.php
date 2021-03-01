@@ -38,6 +38,7 @@ Route::post('/allHistoryNew', [App\Http\Controllers\HistoryController::class, 's
 Route::get('/allHistory/CreateHistory', [App\Http\Controllers\HistoryController::class, 'create'])->middleware('auth');
 //Update, Delete Record
 Route::get('/allHistory/{History}/editpet', [App\Http\Controllers\HistoryController::class, 'editpet'])->middleware('auth');
+Route::get('/allHistory/{History}/look', [App\Http\Controllers\HistoryController::class, 'look'])->middleware('auth');
 Route::put('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'update'])->middleware('auth');
 Route::delete('/allHistory/{History}', [App\Http\Controllers\HistoryController::class, 'delete'])->middleware('auth');
 
