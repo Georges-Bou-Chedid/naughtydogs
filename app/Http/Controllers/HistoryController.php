@@ -139,16 +139,16 @@ class HistoryController extends Controller
         $monthly1 = Monthly::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->get();
         $previous1 = Previous::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->get();
 
-       /* foreach($vaccine1 as $vaccines1){
+            $history->DueDate =NULL;
+            $history->save();
+
+       foreach($vaccine1 as $vaccines1){
             if($vaccines1 != NULL){
                 $history->DueDate = $vaccines1->Date;
                 $history->save();
                 }
-                else if($vaccines1->isEmpty()){
-                    $history->DueDate =NULL;
-                $history->save();
-                }
-            }
+            }  
+            
         foreach($deworming1 as $dewormings1){
             if($dewormings1 != NULL){
                 $history->DueDate = $dewormings1->Date;
@@ -156,15 +156,35 @@ class HistoryController extends Controller
             }
         }
         foreach($annualvaccin1 as $annualvaccins1){
+            if($annualvaccins1 != NULL){
+                $history->DueDate = $annualvaccins1->Date;
+                $history->save();
+            }
         }
         foreach($tridewor1 as $tridewors1){
+            if($tridewors1 != NULL){
+                $history->DueDate = $tridewors1->Date;
+                $history->save();
+            }
         }
         foreach($kyste1 as $kystes1){
+            if($kystes1 != NULL){
+                $history->DueDate = $kystes1->Date;
+                $history->save();
+            }
         }
         foreach($monthly1 as $monthlys1){
+            if($monthlys1 != NULL){
+                $history->DueDate = $monthlys1->Date;
+                $history->save();
+            }
         }
         foreach($previous1 as $previouses1){
-        }*/
+            if($previouses1 != NULL){
+                $history->DueDate = $previouses1->Date;
+                $history->save();
+            }
+        }
 
         return view ('SectionRecord/editpet', ['history' => $history , 'pets' => $pets , 'vaccine' => $vaccine , 'vaccine1' => $vaccine1 ,
         'deworming' => $deworming, 'deworming1' => $deworming1 , 'annualvaccin' => $annualvaccin , 'annualvaccin1' => $annualvaccin1 ,'tridewor' => $tridewor , 'tridewor1' => $tridewor1 , 'kyste' => $kyste 
