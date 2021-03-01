@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHistoriesTable extends Migration
+class CreateMonthliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,16 @@ class CreateHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('histories', function (Blueprint $table) {
+        Schema::create('monthlies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')
+            $table->foreignId('history_id')
             ->references('id')
-            ->on('users')
+            ->on('histories')
             ->onDelete('cascade');
-
-            $table->foreignId('pets_id')
-            ->references('id')
-            ->on('pets')
-            ->onDelete('cascade');
-            $table->string('title');
-            $table->date('DueDate')->nullable();
+            $table->string('Spot')->nullable();
+            $table->string('Brand')->nullable();
+            $table->date('Date')->nullable();
+            $table->integer('Weight')->nullable();
             $table->timestamps();
         });
     }
@@ -37,6 +34,6 @@ class CreateHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('histories');
+        Schema::dropIfExists('monthlies');
     }
 }

@@ -16,7 +16,34 @@ class History extends Model
     }
 
     public function pet(){
-        return $this->belongsTo(Pet::class);
+        return $this->hasOne(Pet::class);
     }
 
+    public function vaccine(){
+        return $this->hasMany(Vaccine::class);
+    }
+
+    public function deworming(){
+        return $this->hasMany(Deworming::class);
+    }
+
+    public function annualvaccin(){
+        return $this->hasMany(Annualvaccin::class);
+    }
+
+    public function tridewor(){
+        return $this->hasMany(Tridewor::class);
+    }
+
+    public function kyste(){
+        return $this->hasMany(Kyste::class);
+    }
+
+    public function monthly(){
+        return $this->hasMany(Monthly::class);
+    }
+
+    public function previous(){
+        return $this->hasMany(Previous::class);
+    }
 }

@@ -4,7 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\History;
-use App\Models\Archive;
+use App\Models\Pet;
+use App\Models\Vaccine;
+use App\Models\Deworming;
+use App\Models\Annualvaccin;
+use App\Models\Tridewor;
+use App\Models\Kyste;
+use App\Models\Monthly;
+use App\Models\Previous;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
@@ -72,9 +79,62 @@ class HistoryController extends Controller
     }
 
 
-    public function edit($id){
+    public function editpet($id){
         $history = History::find($id);
-        return view ('SectionRecord/edithistory', ['history' => $history]);
+        $pets = $history->pet;
+        $vaccine = $history->vaccine;
+        $deworming = $history->deworming;
+        $annualvaccin = $history->annualvaccin;
+        $tridewor = $history->tridewor;
+        $kyste = $history->kyste;
+        $monthly = $history->monthly;
+        $previous = $history->previous;
+
+        if($pets==NULL){
+            $pets = new Pet();
+            $pets->history_id = $history->id;
+            $pets->save();
+        }
+        if($vaccine->isEmpty()){
+            $vaccine = new Vaccine();
+            $vaccine->history_id = $history->id;
+            $vaccine->save();
+        }
+       if($deworming->isEmpty()){
+            $deworming = new Deworming();
+            $deworming->history_id = $history->id;
+            $deworming->save();
+        }
+         if($annualvaccin->isEmpty()){
+            $annualvaccin = new Annualvaccin();
+            $annualvaccin->history_id = $history->id;
+            $annualvaccin->save();
+        }
+        if($tridewor->isEmpty()){
+            $tridewor = new Tridewor();
+            $tridewor->history_id = $history->id;
+            $tridewor->save();
+        }
+       if($kyste->isEmpty()){
+            $kyste = new Kyste();
+            $kyste->history_id = $history->id;
+            $kyste->save();
+        }
+        if($monthly->isEmpty()){
+            $monthly = new Monthly();
+            $monthly->history_id = $history->id;
+            $monthly->save();
+        }
+        if($previous->isEmpty()){
+            $previous = new Previous();
+            $previous->history_id = $history->id;
+            $previous->save();
+        }
+
+        return view ('SectionRecord/editpet', ['history' => $history , 'pets' => $pets , 'vaccine' => $vaccine , 
+        'deworming' => $deworming, 'annualvaccin' => $annualvaccin , 'tridewor' => $tridewor , 'kyste' => $kyste , 'monthly' => $monthly 
+        , 'previous' => $previous]);
+        
     }
 
     public function update(storeHistoryrequest $request , $id){

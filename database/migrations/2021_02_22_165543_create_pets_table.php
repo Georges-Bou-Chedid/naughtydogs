@@ -15,6 +15,11 @@ class CreatePetsTable extends Migration
     {
         Schema::create('pets', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('history_id')
+            ->references('id')
+            ->on('histories')
+            ->onDelete('cascade');
+
             $table->string('species')->nullable();
             $table->string('PetName')->nullable();
             $table->string('Breed')->nullable();

@@ -63,7 +63,7 @@ class RegisterController extends Controller
 
         $users->name = $request->name;
         $users->email = $request->email;
-        $users->password =$request->password;
+        $users->password = Hash::make($request->password);
         $users->role = User::MEMBER;
         $users->phone = $request->phone;
         $users->Referal = request('Referal');
@@ -91,7 +91,7 @@ class RegisterController extends Controller
 
         $users->name = $request->name;
         $users->email = $request->email;
-         $users->password =$request->password;
+         $users->password = Hash::make($request->password);
         $users->role = User::MEMBER;
         $users->phone = $request->phone;
         $users->Referal = request('Referal');

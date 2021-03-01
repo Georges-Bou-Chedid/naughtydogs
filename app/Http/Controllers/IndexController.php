@@ -24,6 +24,9 @@ class IndexController extends Controller
         }
 
         if(auth()->user()->role == User::MEMBER){
+            if(auth()->user()->status == false){
+            return view('unauthorized');
+            }
             return view('Roles/Member' ,['pricing' => $pricing]);
              }
         return view('Roles/Admin',['pricing' => $pricing], ['users' => $users]);
