@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pricinglist;
 use App\Models\User;
 use Illuminate\Http\Response;
-use App\Http\Controllers\Auth;
+use Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\storeUserequest;
@@ -25,6 +25,7 @@ class IndexController extends Controller
 
         if(auth()->user()->role == User::MEMBER){
             if(auth()->user()->status == false){
+            Auth::logout();
             return view('unauthorized');
             }
             return view('Roles/Member' ,['pricing' => $pricing]);

@@ -9,8 +9,10 @@
         <section>
         <button id="btn-down"><i class="fas fa-arrow-down"></i></button>
         <button id="btn-up"><i class="fas fa-arrow-up"></i></button>
+        
         <a href="#previous" class="btn btn-link links">Previous Medical</a>
         <a href="#others" class="btn btn-link links">Annual</a>
+        <p class="alert">Push The arrow buttons for more info.</p>
         <div class="slideDiv">
 
         <table  style="background-color: #ffffff; filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:20px">
