@@ -5,8 +5,8 @@
 <div class="title" style="text-align:center;">
 
 <div class=row>
-  <h1 class="col-sm-7" style="margin-left:330px; text-align:center">Records</h1>
-  <p class="col-md-2 text-md-right"><a href="/allHistory/CreateHistory" class="btn btn-dark btn-outline-light text-md-right">Create Record</a>
+  <h1 class="col-lg-7 text-md-right">Records</h1>
+  <p class="col-lg-5 text-md-right"><a href="/allHistory/CreateHistory" class="btn btn-dark btn-outline-light text-md-right">Create Record</a>
 </div>
 
    <p style="margin-top:20px"> <label for="user" class="font-weight-bold">Choose a Client:</label></p>

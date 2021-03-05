@@ -19,6 +19,8 @@ Route::post('/', [App\Http\Controllers\IndexController::class, 'store'])->middle
 Route::get('/CreatePlan', [App\Http\Controllers\IndexController::class, 'create'])->middleware('auth');
 
 //Update, Delete Plan
+
+Route::get('/adminplans', [App\Http\Controllers\IndexController::class, 'getadmin'])->middleware('auth');
 Route::get('/{Pricinglist}/edit', [App\Http\Controllers\IndexController::class, 'edit'])->middleware('auth');
 Route::put('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'update'])->middleware('auth');
 Route::delete('/{Pricinglist}', [App\Http\Controllers\IndexController::class, 'delete'])->middleware('auth');
@@ -88,6 +90,7 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\IndexController::class ,'index']);
 Route::get('logout', [\App\Http\Controllers\Auth\LoginController::class , 'logout']);
+Route::get('/plans', [App\Http\Controllers\IndexController::class, 'getplans']);
 
 
 

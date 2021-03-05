@@ -40,7 +40,7 @@
 
                 <div class="navbar-header" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <img class="press-logo" src="assets/images/Logo.png" alt="iphone-mockup"> <a class="navbar-brand" style="font-family: 'Crete Round', serif;" href="/">{{ config('app.name', 'NaughtyDogs') }}</a>
+                    <img class="press-logo" src="assets/images/Logo.png" alt="iphone-mockup"> <a class="navbar-brand" style="font-family: 'Crete Round', serif; color:rgb(2, 160, 233)" href="/">{{ config('app.name', 'NaughtyDogs') }}</a>
                     <div class="navbar-nav mr-auto">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
@@ -59,7 +59,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/#pricing">Boutique</a>
+          <a class="nav-link" href="/#press">Boutique</a>
         </li>
 
                    

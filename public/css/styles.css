@@ -30,13 +30,12 @@ p{
   line-height: 1.5;
 }
 
-#title{
-  background-color: #ff4c68;
-    color: white;
+.title{
+    color: rgb(107, 98, 98);
 }
 
 .container-fluid{
-  padding:2% 15% 7%;
+  padding:2% 15% 3%;
  background-color :#fff;
 }
 
@@ -84,10 +83,19 @@ padding: 0 0 4.5rem;
 .hr1{
   border: none;
     height: 50px;
-    width: 70%;
+    width: 100%;
     /* Set the hr color */
     margin:auto;
-    background-color: rgb(2, 173, 253);
+    background-color: rgb(2, 160, 233);
+}
+
+.hr2{
+  border: none;
+    height: 50px;
+    width: 100%;
+    /* Set the hr color */
+    margin:auto;
+    background-color: #c99357;
 }
 
 /* Features Section*/
@@ -123,13 +131,13 @@ color:black;
 }
 
 .testimonial-text{
-  font-size: 3rem;
+  font-size: 2.5rem;
   line-height: 1.5;
 }
 
 .testimonial-image{
   width: 40%;
-  margin: 20px;
+  margin: 5px;
 }
 
 .carousel-item{
@@ -158,6 +166,47 @@ color:black;
 padding:100px;
 text-align: center;
 }
+.containerhome {
+  position: relative;
+  width: 50%;
+  left: 16%;
+}
+
+.image {
+  display: block;
+  width: 65%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 60%;
+  left: 0;
+  right: 0;
+  background-color: #161616;
+  overflow: hidden;
+  width: 65%;
+  height:0;
+  transition: .5s ease;
+}
+
+.containerhome:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+
+.text {
+  font-size: 40px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
 
 .prices{
   font-size: 3rem;
@@ -170,7 +219,7 @@ padding: 0.75% 0.25%;
 
 #cta{
   text-align: center;
-  background-color:rgb(15, 204, 230); 
+  background-color:#c99357; 
   color: #fff;
   padding:7% 15%;
 }
@@ -308,25 +357,32 @@ width:900px;
       height: 20px;
       width: 100%;
       /* Set the hr color */
-      background-color: rgb(2, 173, 253);
+      background-color: rgb(2, 160, 233);
   }
 
   #testimonials{
 
     text-align: center;
-    background-color: rgba(100, 86, 86, 0.041);
+    background-color: #fff;
     color:black;
     }
     
     .testimonial-text{
-      font-size: 2rem;
+      font-size: 1.5rem;
       line-height: 1.5;
     }
     
-    .testimonial-image{
-      width: 40%;
-      margin: 20px;
+    .cta-heading{
+      font-family: "Montserrat";
+      font-weight:900;
+      font-size:2rem;
+      line-height: 1.5;
     }
-}
+
+    .img-responsive{
+      width:120px;
+      height:120px;
+    }
+  }    
 
 

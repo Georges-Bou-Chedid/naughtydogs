@@ -32,14 +32,17 @@
     <div id="testimonial-carousel" class="carousel slide" data-ride="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <h2 class="testimonial-text">Log In Successfully! Welcome to our site.
-      </h2>
-     <p> <img class="testimonial-image" src="assets/images/dog-img.jpg" alt="dog-profile"></p>
+      <h2 class="testimonial-text">Logged In Successfully! Welcome to our website</h2>
+      <p> <a class="btn btn-lg btn-dark" href="{{ route('logout') }}">Logout</a></p>
+     <p> <img class="testimonial-image" style="margin-top:12px" src="assets/images/grooming.jpg" alt="dog-profile"></p>
      
 
     </div>
     <div class="carousel-item">
-      <h2 class="testimonial-text">This is the Plans u can get!</h2>
+      <h2 class="testimonial-text">Naughty dogs vet clinic offers a full range of medical services.<br>Our goal is to help our patients livelong,happy
+      and healthy lives. Therefore, we take pride in our dedication to the highest standard in veterinary medicine<br>
+      FOR EMERGENCIES , please call 81/743986</h2>
+      <p> <img class="testimonial-image" style="margin-top:12px" src="assets/images/medical wejha1.jpg" alt="dog-profile"></p>
     </div>
   </div>
   <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
@@ -50,6 +53,7 @@
     <span class="carousel-control-next-icon"></span>
 
   </a>
+  <hr class="hr1">
 </div>
 
 
@@ -61,62 +65,49 @@
 
   <section id="press">
   <div class="row">
-      <div class="col-lg-12">
-  <h3>Pet Boutique</h3>
-  <img class="testimonial-image" src="assets/images/boutic2.png" alt="dog-profile">
+      <div class="col-lg-12" style="text-align:center; margin-top:100px">
+  <h2>Pet Boutique</h2>
+  <p>Simple and affordable price plans for your pets.</p>
+  <h6>Tap on the picture below <i class="far fa-arrow-alt-circle-down"></i></h6>
+  <a href="/plans"><div class="container containerhome">
+ <img src="assets/images/boutic2.png" alt="Avatar" class="image">
+  <div class="overlay">
+  <div class="text"><i>Click Here!</i></div>
+  </div>
+</div></a>
+  <p>Everything your pet needs to be pampered at all times!</p>
+ 
+  </div>
   </section>
 
 
-  <!-- Pricing -->
-
-  <section id="pricing">
-
-<h2>A Plan for Every Pet Needs</h2>
-<p>Simple plans for your Pet.</p>
-
-
-<div class="row">
-    @foreach ($pricing as $pricings)
-<div class="pricing-column col-lg-4   col-md-6">
-
-<div class="card">
-  <div class="card-header">
-  <h3>{{$pricings->title}}</h3>
-  </div>
-  <div class="card-body">
-    <h2 class="prices"><img src = "assets/images/{{$pricings->img}}" class="img-responsive"></h2>
-    <p>{{$pricings->Description}}</p>
-  </div>
-</div>
-</div>
-@endforeach
-
-</section>
+ 
 
 
   <!-- Call to Action -->
 
   <section id="cta">
 
-    <h3 class="cta-heading">Find the True Love of Your Dog's Life Today.</h3>
-    <button class="download-button btn btn-lg btn-dark" type="button" ><i class="fab fa-apple"></i>Download</button>
-    <button class="download-button btn btn-lg btn-light" type="button"><i class="fab fa-google-play"></i>Download</button>
+    <h3 class="cta-heading">Everything you need, Under one Woof!.</h3>
 
   </section>
 
 
   <!-- Footer -->
-
+  
   <footer id="footer">
+  
     <i class="social-icon fab fa-facebook-f"></i>
-    <i class="social-icon fab fa-twitter"></i>
     <i class="social-icon fab fa-instagram"></i>
     <i class="social-icon fas fa-envelope"></i>
-    <p>Mansourie and Baabdath</p>
-    <p>© Copyright 2021 NaughtyDogs</p>
-
+    <p><i class="fas fa-map-marker-alt" style="color:black"></i>    Mansourie Branch, Old Road<br>
+                                                                              Baabdath Branch, Street 11</p>
+    <p><i class="fas fa-mobile-alt" style="color:black"></i>   +961 81 743 986 -
+                                                               +961 71 383 107</p>
+    <p><i class="fab fa-whatsapp" style="color:black"></i> +961 81 743 986</p><br>
+    <p><strong>©</strong> Copyright {{ date('Y') }} NaughtyDogs</p>
   </footer>
-
+  <hr class="hr2">
 
  
 @endsection

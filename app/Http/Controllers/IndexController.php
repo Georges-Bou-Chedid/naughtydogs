@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\storeUserequest;
 use App\Http\Requests\storePlanrequest;
+use Illuminate\Support\Facades\File;
 
 class IndexController extends Controller
 {
@@ -17,10 +18,9 @@ class IndexController extends Controller
     * @return void
     */
     public function index(){
-        $pricing = Pricinglist::latest()->get();
         $users = User::all();
         if(!auth()->user()){
-            return view ('Roles/welcome', ['pricing' => $pricing]);
+            return view ('Roles/welcome');
         }
 
         if(auth()->user()->role == User::MEMBER){
@@ -28,9 +28,9 @@ class IndexController extends Controller
             Auth::logout();
             return view('unauthorized');
             }
-            return view('Roles/Member' ,['pricing' => $pricing]);
+            return view('Roles/Member');
              }
-        return view('Roles/Admin',['pricing' => $pricing], ['users' => $users]);
+        return view('Roles/Admin',['users' => $users]);
         }
 
 
@@ -68,6 +68,16 @@ class IndexController extends Controller
             return redirect('/')->with('delete' , 'Deleted');
         }
     }
+
+    public function getplans(){
+        $pricing = Pricinglist::latest()->get();
+        return view ('Pricing/getplan' , ['pricing' => $pricing]);
+    }
+
+    public function getadmin(){
+        $pricing = Pricinglist::latest()->get();
+        return view ('Pricing/adminplan' , ['pricing' => $pricing]);
+    }
     
 
     public function create(){
@@ -100,7 +110,7 @@ class IndexController extends Controller
         $pricing->save();
     }
 
-        return redirect('/#pricing');
+        return redirect('/adminplans');
     }
 
     public function edit($id){
@@ -114,6 +124,10 @@ class IndexController extends Controller
 
         if ($request->hasFile('file')) {
 
+            $filePath = public_path('assets/images/'.$pricing->img); 
+             if(File::exists($filePath)) {
+                 File::delete($filePath);
+             }
 
             $image = $request->file('file');
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
@@ -132,14 +146,18 @@ class IndexController extends Controller
         $pricing->save();
     }
 
-        return redirect('/#pricing');
+    return redirect('/adminplans');
     }
 
     public function delete($id){
         $pricing = Pricinglist::find($id);
+        $filePath = public_path('assets/images/'.$pricing->img); 
+         if(File::exists($filePath)) {
+          File::delete($filePath);
+        }
         $pricing->delete();
 
-        return redirect('/#pricing');
+        return redirect('/adminplans');
     }
 
 }
