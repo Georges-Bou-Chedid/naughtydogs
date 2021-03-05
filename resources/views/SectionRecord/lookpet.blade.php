@@ -1,7 +1,7 @@
 @extends('layouts.Member')
 
 @section('content')
-<div id="wrapper">
+<div id="wrapper" style="background-color:#F8F8F8">
 	<div id="page" class="container">
 
     <div >
@@ -10,12 +10,11 @@
         <button id="btn-down"><i class="fas fa-arrow-down"></i></button>
         <button id="btn-up"><i class="fas fa-arrow-up"></i></button>
         
-        <a href="#previous" class="btn btn-link links">Previous Medical</a>
         <a href="#others" class="btn btn-link links">Annual</a>
         <p class="alert">Push The arrow buttons for more info.</p>
         <div class="slideDiv">
 
-        <table  style="background-color: #ffffff; filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:20px">
+        <table  style="filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:20px">
             <tr style="border:1px solid"><td class="headerowner"><b>OWNER INfORMATION</b></td></tr>
             <tr ><td  class="bodyowner"><b>Name :</b> {{$history->user->name}}</td></tr>
             <tr ><td  class="bodyowner"><b>Phone Number :</b> {{$history->user->phone}}</td></tr>
@@ -35,7 +34,7 @@
       @method('PUT')
         <div class="slideDiv">
 
-    <table style="background-color: #ffffff; filter: alpha(opacity=40); opacity: 7;border:1px solid">
+    <table style="filter: alpha(opacity=40); opacity: 7;border:1px solid">
             <tr style="border:1px solid"><td class="headerowner"><b>PET INfORMATION</b></td></tr>
             <tr ><td  class="bodyowner" ><b>Species :</b>@if($pets->species == NULL) Not Specified @else {{$pets->species}} @endif</td></tr>
 
@@ -103,7 +102,7 @@
 
 
 
-            <tr><table border="2" style="margin-left:340px; margin-top:15px">
+            <tr><table border="2" style="margin-top:15px">
             <tr><th class="tablessection3">Deworming</th>
                 <th class="tablessection3">Brand</th>
                  <th class="tablessection3">Date</th>
@@ -162,7 +161,7 @@
                  
 
 
-            <tr><table border="2" style="margin-left:340px; margin-top:15px">
+            <tr><table border="2" style="margin-top:15px">
             <tr><th colspan="6" class="headerparts">Trimesters Deworming</th></tr>
             <tr><th class="tablessection3">Deworming</th>
                 <th class="tablessection3">Brand</th>
@@ -217,7 +216,7 @@
 
 
 
-            <tr><table border="2" style="margin-left:340px; margin-top:15px">
+            <tr><table border="2" style="margin-top:15px">
             <tr><th colspan="6" class="headerparts">Monthly Spot On</th></tr>
             <tr><th class="tablessection3">Spot On</th>
                 <th class="tablessection3">Brand</th>
@@ -246,53 +245,6 @@
         </div>
     </section>
 
-        <!--section 5 -->
-        <section id="previous">
-        <table border="2" style="background-color: #ffffff; filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:15px; margin-top:25px">
-            <tr style="border:1px solid"><td class="headersection3"><b>Previous Medical History</b></td></tr>
-          
-            <tr><table border="2" style="margin-bottom:15px">
-            <tr><th class="tablessection3">Date</th>
-                <th class="tablessection3">Case Diagnosis</th>
-                 <th class="tablessection3">Procedure</th>
-                <th class="tablessection3">Treatment</th>
-                <th class="tablessection3">Weight</th>
-                <th class="tablessection3">Medications</th>
-                <th class="tablessection3">Dosage</th>
-                <th class="tablessection3">Frequency</th>
-                <th class="tablessection3">Notes</th>
-            
-            @foreach($previous as $previouses)
-                
-                 <tr><td class="tablessection3">@if($previouses->Date == NULL) Not Specified @else {{$previouses->Date}} @endif</td>
-                 <td class="tablessection3">@if($previouses->Case == NULL) Not Specified @else {{$previouses->Case}} @endif</td>
-                 <td class="tablessection3">@if($previouses->Procedure == NULL) Not Specified @else {{$previouses->Procedure}} @endif</td>
-                 <td class="tablessection3">@if($previouses->Treatment == NULL) Not Specified @else {{$previouses->Treatment}} @endif</td>
-                 <td class="tablessection3">@if($previouses->Weight == NULL) Not Specified @else {{$previouses->Weight}} @endif</td>
-                 <td class="tablessection3">@if($previouses->Medications == NULL) Not Specified @else {{$previouses->Medications}} @endif</td>
-                 <td class="tablessection3">@if($previouses->Dosage == NULL) Not Specified @else {{$previouses->Dosage}} @endif</td>
-                 <td class="tablessection3">@if($previouses->Frequency == NULL) Not Specified @else {{$previouses->Frequency}} @endif</td>
-                 <td class="tablessection3">@if($previouses->Notes == NULL) Not Specified @else {{$previouses->Notes}} @endif</td>
-
-                 @endforeach
-                
-                
-                </table>
-</table>
-</section>
-
-<p>{{$previouses->Notes}}</p>
-
-   
     
-
-        <div class="field is-grouped">
-            <div class="control">
-           
-            <a href="javascript:history.back()" class="btn btn-danger">Back</a>
-            </div>
-            
-            
-        </div>
 </div>
 @endsection

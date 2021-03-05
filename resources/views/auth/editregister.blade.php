@@ -29,7 +29,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $users->email }}" required autocomplete="email">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $users->email }}">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -58,7 +58,7 @@
                             <label for="Referal" class="col-md-4 col-form-label text-md-right">Referal</label>
 
                             <div class="col-md-6">
-                                <input id="Referal" type="text" class="form-control @error('Referal') is-invalid @enderror" name="Referal" value="{{ $users->Referal }}" required autocomplete="Referal" autofocus>
+                                <input id="Referal" type="text" class="form-control @error('Referal') is-invalid @enderror" name="Referal" value="{{ $users->Referal }}" autofocus>
 
                                 @error('Referal')
                                     <span class="invalid-feedback" role="alert">
@@ -72,7 +72,7 @@
                             <label for="PreviousVet" class="col-md-4 col-form-label text-md-right">PreviousVet</label>
 
                             <div class="col-md-6">
-                                <input id="PreviousVet" type="text" class="form-control @error('PreviousVet') is-invalid @enderror" name="PreviousVet" value="{{ $users->PreviousVet }}" required autocomplete="PreviousVet" autofocus>
+                                <input id="PreviousVet" type="text" class="form-control @error('PreviousVet') is-invalid @enderror" name="PreviousVet" value="{{ $users->PreviousVet }}" autofocus>
 
                                 @error('PreviousVet')
                                     <span class="invalid-feedback" role="alert">
@@ -86,7 +86,7 @@
                             <label for="address" class="col-md-4 col-form-label text-md-right">address</label>
 
                             <div class="col-md-6">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $users->address }}" required autocomplete="address" autofocus>
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $users->address }}" autofocus>
 
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
@@ -100,7 +100,7 @@
                             <label for="ContactPref" class="col-md-4 col-form-label text-md-right">ContactPref</label>
 
                             <div class="col-md-6">
-                            <select class="form-control" id="ContactPref" name="ContactPref" value="" required focus>
+                            <select class="form-control" id="ContactPref" name="ContactPref" value="" focus>
                             <option value="">--Select--</option>
                             <option value="Call"  {{ ($users->ContactPref) == 'Call' ? 'selected' : '' }}>Call</option>        
                             <option value="Wapp" {{ ($users->ContactPref) == 'Wapp' ? 'selected' : '' }}>Wapp</option>

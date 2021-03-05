@@ -1,54 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="title">
+<section>
+
   <div class="container-fluid">
+  <hr class="hr1">
     <!-- Title -->
   
-
     <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-12" style="text-align:center">
 
-      <h1 class="Big-Heading">Meet new and interesting dogs nearby.</h1>
-
-      <button type="button" class="btn btn-dark btn-lg download-button"><i class="fab fa-apple"></i> Download</button>
-      <button type="button" class="btn btn-outline-light btn-lg"><i class="fab fa-google-play"></i> Download</button>
+      <img class="title-image" src="assets/images/Logo.png" alt="iphone-mockup">
+     
     </div>
 
-    <div class="col-lg-6">
-      <img class="title-image" src="assets/images/iphone6.png" alt="iphone-mockup">
+    <div class="col-lg-12" style="text-align:center">
+    <img class="title-image2" src="assets/images/naughty dogs.png" alt="iphone-mockup">
     </div>
   </div>
-
+  <hr class="hr1">
 </div>
 
-  </section>
-
-
-  <!-- Features -->
-
-  <section id="features">
-
-
-    <div class="row">
-    <div class="feature-box col-lg-4">
-        <i class="icon fas fa-check-circle fa-4x"></i>
-      <h3>Easy to use.</h3>
-      <p>So easy to use, even your dog could do it.</p>
-    </div>
-
-    <div class="feature-box col-lg-4">
-      <i class="icon fas fa-bullseye fa-4x"></i>
-    <h3>Elite Clientele</h3>
-    <p>We have all the dogs, the greatest dogs.</p>
-  </div>
-
-    <div class="feature-box col-lg-4">
-      <i class="icon fas fa-heart fa-4x"></i>
-    <h3>Guaranteed to work.</h3>
-    <p>Find the love of your dog's life or your money back.</p>
-  </div>
-</div>
 
   </section>
 
@@ -60,15 +32,13 @@
     <div id="testimonial-carousel" class="carousel slide" data-ride="false">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <h2 class="testimonial-text">I no longer have to sniff other dogs for love. I've found the hottest Corgi on NaughtyDogs. Woof.</h2>
-      <img class="testimonial-image" src="assets/images/dog-img.jpg" alt="dog-profile">
-      <em>Guy, Mansourie</em>
+      <h2 class="testimonial-text">Welcome to Login.</h2>
+     <p> <img class="testimonial-image" src="assets/images/dog-img.jpg" alt="dog-profile"></p>
+     <p> <a class="btn btn-lg btn-dark" href="{{ route('login') }}">Login</a></p>
 
     </div>
     <div class="carousel-item">
-      <h2 class="testimonial-text">My dog used to be so lonely, but with NaughtyDogs's help, they've found the love of their life. I think.</h2>
-      <em>Tina, Roumieh</em>
-
+      <h2 class="testimonial-text">This is the Plans u can get!</h2>
     </div>
   </div>
   <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
@@ -89,7 +59,10 @@
   <!-- Press -->
 
   <section id="press">
-
+  <div class="row">
+      <div class="col-lg-12">
+  <h3>Pet Boutique</h3>
+  <img class="testimonial-image" src="assets/images/boutic2.png" alt="dog-profile">
   </section>
 
 
@@ -97,7 +70,7 @@
 
   <section id="pricing">
 
-    <h2>A Plan for Every Dog's Needs</h2>
+    <h2>A Boutique for Every Dog's Needs</h2>
     <p>Simple and affordable price plans for your and your dog.</p>
 
     
@@ -125,8 +98,6 @@
   <section id="cta">
 
     <h3 class="cta-heading">Find the True Love of Your Dog's Life Today.</h3>
-    <button class="download-button btn btn-lg btn-dark" type="button" ><i class="fab fa-apple"></i>Download</button>
-    <button class="download-button btn btn-lg btn-light" type="button"><i class="fab fa-google-play"></i>Download</button>
 
   </section>
 

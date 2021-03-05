@@ -25,7 +25,7 @@ class storeupdateuserrequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['string', 'email', 'max:255'],
+            'email' => ['nullable', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'phone' => ['required' , 'string' , 'min:8' , 'max:8']
         ];

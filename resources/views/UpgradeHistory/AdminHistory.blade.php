@@ -4,8 +4,8 @@
 
 <div class="title" style="text-align:center;">
 <div class=row>
-  <h1 class="col-sm-7" style="margin-left:270px">Records</h1>
-  <p class="col-md-2 text-md-right"><a href="/allHistory/CreateHistory" class="btn btn-dark btn-outline-light text-md-right">Create Record</a>
+  <h1 class="col-sm-7" style="margin-left:330px; text-align:center">Records</h1>
+  <p class="col-md-2 text-md-right"><a href="/allHistory/CreateHistory" class="btn btn-dark btn-outline-light">Create Record</a>
 </div>
 
    <p style="margin-top:20px"> <label for="user" class="font-weight-bold">Choose a Client:</label></p>
@@ -50,7 +50,7 @@
   <div class="card">
   <div class="card-link">
     <table><tr>
-    <td class="col-6"><h3><strong>{{$history->title}} / {{$history->user->name}}</h3></strong></td>
+    <td class="col-6"><h3 @foreach ($histories1 as $history1) @if($history->id == $history1->id) style="color:red" @endif @endforeach><strong>{{$history->title}} / {{$history->user->name}}</h3></strong></td>
     <td><a href="/allHistory/{{ $history->id }}/editpet" class="btn btn-info">Change</a></td>
  
   <td><form method="POST" action="/allHistory/{{ $history->id }}">

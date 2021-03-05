@@ -5,7 +5,7 @@
 <div class="title" style="text-align:center;">
 
 <div class=row>
-  <h1 class="col-sm-7" style="margin-left:270px">Records</h1>
+  <h1 class="col-sm-7" style="margin-left:330px; text-align:center">Records</h1>
   <p class="col-md-2 text-md-right"><a href="/allHistory/CreateHistory" class="btn btn-dark btn-outline-light text-md-right">Create Record</a>
 </div>
 

@@ -36,7 +36,8 @@ p{
 }
 
 .container-fluid{
-  padding:3% 15% 7%;
+  padding:2% 15% 7%;
+ background-color :#fff;
 }
 
 /* Navigation Bar */
@@ -68,10 +69,25 @@ padding: 0 0 4.5rem;
 /*Title Image*/
 
 .title-image{
-  width: 60%;
-  transform: rotate(25deg);
-  position: absolute;
-  right:30%;
+  width: 300px;
+  transform: rotate(0deg);
+  text-align:center;
+ 
+}
+.title-image2{
+  width: 500px;
+  transform: rotate(0deg);
+  text-align:center;
+}
+
+
+.hr1{
+  border: none;
+    height: 50px;
+    width: 70%;
+    /* Set the hr color */
+    margin:auto;
+    background-color: rgb(2, 173, 253);
 }
 
 /* Features Section*/
@@ -102,8 +118,8 @@ padding: 0 0 4.5rem;
 #testimonials{
 
 text-align: center;
-background-color: #ef8172;
-color:#fff;
+background-color: #fff;
+color:black;
 }
 
 .testimonial-text{
@@ -112,8 +128,7 @@ color:#fff;
 }
 
 .testimonial-image{
-  width: 10%;
-  border-radius: 100%;
+  width: 40%;
   margin: 20px;
 }
 
@@ -121,16 +136,20 @@ color:#fff;
   padding: 7% 15%;
 }
 
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+
 #press{
-  background-color: #ef8172;
-  text-align: center;
+  background-color: #fff;
   padding-bottom: 3%;
 
 }
 
 .press-logo{
-  width:15%;
-  margin:20px 20px 50px;
+  width:5%;
+  margin:20px 20px 21px;
 }
 
 /*pricing*/
@@ -151,7 +170,7 @@ padding: 0.75% 0.25%;
 
 #cta{
   text-align: center;
-  background-color: #ff4c68;
+  background-color:rgb(15, 204, 230); 
   color: #fff;
   padding:7% 15%;
 }
@@ -179,13 +198,13 @@ padding: 0.75% 0.25%;
 .headerowner{
 background-color:rgb(49, 49, 255);
 text-align:center; 
-width:900px
+width:900px;
 }
 
 .headerparts{
   background-color:rgb(0, 134, 211);
   text-align:center; 
-
+  width:900px;
   }
 
 
@@ -268,16 +287,46 @@ width:900px
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-@media (max-width:1028px){
 
-  #title{
-    text-align: center;
-  }
+
+
+@media (max-width:1024px){
+
+ 
 
   .title-image{
-    position: static;
-    transform: rotate(0);
+    width: 20%;
+    transform: rotate(0deg);
+    
   }
+  .title-image2{
+    width: 40%;
+    transform: rotate(0deg);
+  }
+  .hr1{
+    border: none;
+      height: 20px;
+      width: 100%;
+      /* Set the hr color */
+      background-color: rgb(2, 173, 253);
+  }
+
+  #testimonials{
+
+    text-align: center;
+    background-color: rgba(100, 86, 86, 0.041);
+    color:black;
+    }
+    
+    .testimonial-text{
+      font-size: 2rem;
+      line-height: 1.5;
+    }
+    
+    .testimonial-image{
+      width: 40%;
+      margin: 20px;
+    }
 }
 
 

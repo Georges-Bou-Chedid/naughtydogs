@@ -27,70 +27,17 @@ class HistoryController extends Controller
             return redirect('/')->with('Historyempty', 'Sorry No History Found!!');
         }
 
-        foreach($history as $histories){
-            $histories->DueDate =NULL;
-            $histories->save();
-    
-        $vaccine1 = Vaccine::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
-        foreach($vaccine1 as $vaccines1){
-        if($vaccines1 != NULL){
-            $histories->DueDate = $vaccines1->Date ;
-            $histories->save();
-            }
-        }
-        $deworming1 = Deworming::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
-        foreach($deworming1 as $dewormings1){
-            if($dewormings1 != NULL){
-                $histories->DueDate = $dewormings1->Date;
-                $histories->save();
-            }
-        }
-        $annualvaccin1 = Annualvaccin::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
-        foreach($annualvaccin1 as $annualvaccins1){
-            if($annualvaccins1 != NULL){
-                $histories->DueDate = $annualvaccins1->Date;
-                $histories->save();
-            }
-        }
-        $tridewor1 = Tridewor::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
-        foreach($tridewor1 as $tridewors1){
-            if($tridewors1 != NULL){
-                $histories->DueDate = $tridewors1->Date;
-                $histories->save();
-            }
-        }
-        $kyste1 = Kyste::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
-        foreach($kyste1 as $kystes1){
-            if($kystes1 != NULL){
-                $histories->DueDate = $kystes1->Date;
-                $histories->save();
-            }
-        }
-        $monthly1 = Monthly::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
-        foreach($monthly1 as $monthlys1){
-            if($monthlys1 != NULL){
-                $histories->DueDate = $monthlys1->Date;
-                $histories->save();
-            }
-        }
-        $previous1 = Previous::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
-        foreach($previous1 as $previouses1){
-            if($previouses1 != NULL){
-                $histories->DueDate = $previouses1->Date;
-                $histories->save();
-            }
-        }
-    }
+        
 
         return view('UpgradeHistory/UserHistory' ,['histories' => $history]);
 
     }
 
     public function History(){
-        $history = History::orderBy('DueDate', 'desc')->get();
+        $history = History::orderBy('DueDate', 'asc')->get();
         $users = User::all();
         $history1 = History::where('DueDate', '<=', Carbon::now()->addDays(4)->toDateTimeString())->get();
-        $history2 = History::where('DueDate', '<=', Carbon::now()->subDays(1)->toDateTimeString())->get();
+        $history2 = History::where('DueDate', '<=', Carbon::now()->subDays(3)->toDateTimeString())->get();
 
         foreach($history as $histories){
             $pets = $histories->pet;
@@ -144,52 +91,52 @@ class HistoryController extends Controller
             }
         }
 
-            $histories->DueDate =NULL;
-            $histories->save();
+        $histories->DueDate =Carbon::now()->addDays(1000)->toDateTimeString();
+        $histories->save();
     
-        $vaccine1 = Vaccine::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        $vaccine1 = Vaccine::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
         foreach($vaccine1 as $vaccines1){
         if($vaccines1 != NULL){
             $histories->DueDate = $vaccines1->Date ;
             $histories->save();
             }
         }
-        $deworming1 = Deworming::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        $deworming1 = Deworming::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
         foreach($deworming1 as $dewormings1){
             if($dewormings1 != NULL){
                 $histories->DueDate = $dewormings1->Date;
                 $histories->save();
             }
         }
-        $annualvaccin1 = Annualvaccin::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        $annualvaccin1 = Annualvaccin::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
         foreach($annualvaccin1 as $annualvaccins1){
             if($annualvaccins1 != NULL){
                 $histories->DueDate = $annualvaccins1->Date;
                 $histories->save();
             }
         }
-        $tridewor1 = Tridewor::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        $tridewor1 = Tridewor::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
         foreach($tridewor1 as $tridewors1){
             if($tridewors1 != NULL){
                 $histories->DueDate = $tridewors1->Date;
                 $histories->save();
             }
         }
-        $kyste1 = Kyste::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        $kyste1 = Kyste::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
         foreach($kyste1 as $kystes1){
             if($kystes1 != NULL){
                 $histories->DueDate = $kystes1->Date;
                 $histories->save();
             }
         }
-        $monthly1 = Monthly::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        $monthly1 = Monthly::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
         foreach($monthly1 as $monthlys1){
             if($monthlys1 != NULL){
                 $histories->DueDate = $monthlys1->Date;
                 $histories->save();
             }
         }
-        $previous1 = Previous::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        $previous1 = Previous::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
         foreach($previous1 as $previouses1){
             if($previouses1 != NULL){
                 $histories->DueDate = $previouses1->Date;
@@ -207,9 +154,65 @@ class HistoryController extends Controller
             return redirect('/allHistory');
         }
         else{
-        $history = History::where('user_id', $getSelectValue)->orderBy('DueDate', 'desc')->get();
+        $history = History::where('user_id', $getSelectValue)->orderBy('DueDate', 'asc')->get();
         $history1 = History::where('DueDate', '<=', Carbon::now()->addDays(4)->toDateTimeString())->get();
-        $history2 = History::where('DueDate', '<=', Carbon::now()->toDateTimeString())->get();
+        $history2 = History::where('DueDate', '<=', Carbon::now()->subDays(3)->toDateTimeString())->get();
+
+        foreach($history as $histories){
+            $histories->DueDate =Carbon::now()->subDays(1000)->toDateTimeString();
+            $histories->save();
+    
+        $vaccine1 = Vaccine::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        foreach($vaccine1 as $vaccines1){
+        if($vaccines1 != NULL){
+            $histories->DueDate = $vaccines1->Date ;
+            $histories->save();
+            }
+        }
+        $deworming1 = Deworming::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        foreach($deworming1 as $dewormings1){
+            if($dewormings1 != NULL){
+                $histories->DueDate = $dewormings1->Date;
+                $histories->save();
+            }
+        }
+        $annualvaccin1 = Annualvaccin::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        foreach($annualvaccin1 as $annualvaccins1){
+            if($annualvaccins1 != NULL){
+                $histories->DueDate = $annualvaccins1->Date;
+                $histories->save();
+            }
+        }
+        $tridewor1 = Tridewor::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        foreach($tridewor1 as $tridewors1){
+            if($tridewors1 != NULL){
+                $histories->DueDate = $tridewors1->Date;
+                $histories->save();
+            }
+        }
+        $kyste1 = Kyste::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        foreach($kyste1 as $kystes1){
+            if($kystes1 != NULL){
+                $histories->DueDate = $kystes1->Date;
+                $histories->save();
+            }
+        }
+        $monthly1 = Monthly::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        foreach($monthly1 as $monthlys1){
+            if($monthlys1 != NULL){
+                $histories->DueDate = $monthlys1->Date;
+                $histories->save();
+            }
+        }
+        $previous1 = Previous::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $histories->id)->get();
+        foreach($previous1 as $previouses1){
+            if($previouses1 != NULL){
+                $histories->DueDate = $previouses1->Date;
+                $histories->save();
+            }
+        }
+    }
+    
         $users = User::all();
         $users1 = User::where('id' , $getSelectValue)->get();
 
@@ -251,13 +254,13 @@ class HistoryController extends Controller
         $previous = $history->previous;
 
        
-        $vaccine1 = Vaccine::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $history->id)->get();
-        $deworming1 = Deworming::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $history->id)->get();
-        $annualvaccin1 = Annualvaccin::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $history->id)->get();
-        $tridewor1 = Tridewor::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $history->id)->get();
-        $kyste1 = Kyste::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $history->id)->get();
-        $monthly1 = Monthly::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $history->id)->get();
-        $previous1 = Previous::where('Date', '<=', Carbon::now()->addDays(2)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(1)->toDateTimeString())->where('history_id' , $history->id)->get();
+        $vaccine1 = Vaccine::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $history->id)->get();
+        $deworming1 = Deworming::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $history->id)->get();
+        $annualvaccin1 = Annualvaccin::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $history->id)->get();
+        $tridewor1 = Tridewor::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $history->id)->get();
+        $kyste1 = Kyste::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $history->id)->get();
+        $monthly1 = Monthly::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $history->id)->get();
+        $previous1 = Previous::where('Date', '<=', Carbon::now()->addDays(4)->toDateTimeString())->where('Date', '>=', Carbon::now()->subDays(3)->toDateTimeString())->where('history_id' , $history->id)->get();
 
        
        

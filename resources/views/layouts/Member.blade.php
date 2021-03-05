@@ -33,17 +33,17 @@
 <body>
     <div id="textarea.form-control">
         <nav class="navbar-expand-sm navbar-light bg-white shadow-sm">
-            <div class="container">
-            
-               
+            <div class="navbar navbar-default container">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-header" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <a class="navbar-brand" style="font-family: 'Crete Round', serif;" href="/">{{ config('app.name', 'NaughtyDogs') }}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <img class="press-logo" src="/assets/images/Logo.png"> <a class="navbar-brand" style="font-family: 'Crete Round', serif;" href="/">{{ config('app.name', 'NaughtyDogs') }}</a>
+                    <div class="navbar-nav mr-auto">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
-
+</div>
+</div>
      <div class="collapse navbar-collapse" id="navbarSupportedContent">
      @if(session('Historyempty'))
         <div class="badge" style="margin-left:70px; font-size:1.2rem; color:#ff4c68">
@@ -51,9 +51,9 @@
         </div>
         @endif
 
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto">   
       <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link active" href="/">Home</a>
         </li>
 
         <li class="nav-item">
@@ -65,7 +65,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="/MyHistory">My History</a>
+          <a class="nav-link" href="/MyHistory">History</a>
         </li>
 
                    
@@ -105,7 +105,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-2">
             @yield('content')
         </main>
     </div>
