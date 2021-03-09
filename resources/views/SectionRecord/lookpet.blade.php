@@ -14,8 +14,11 @@
         <p class="alert">Push The arrow buttons for more info.</p>
         <div class="slideDiv">
 
-        <table  style="filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:20px">
-            <tr style="border:1px solid"><td class="headerowner"><b>OWNER INfORMATION</b></td></tr>
+        <h2 class="headerowner2" style="font-family: 'Akaya Telivigala', cursive;"><b>OWNER INfORMATION</b></h2>
+        
+        <table  style="filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:20px ; margin-left:15px">
+            
+            <tr><td class="headerowner"></tr></td>
             <tr ><td  class="bodyowner"><b>Name :</b> {{$history->user->name}}</td></tr>
             <tr ><td  class="bodyowner"><b>Phone Number :</b> {{$history->user->phone}}</td></tr>
             <tr ><td  class="bodyowner"><b>Referal :</b> {{$history->user->Referal }}</td></tr>
@@ -34,8 +37,10 @@
       @method('PUT')
         <div class="slideDiv">
 
-    <table style="filter: alpha(opacity=40); opacity: 7;border:1px solid">
-            <tr style="border:1px solid"><td class="headerowner"><b>PET INfORMATION</b></td></tr>
+        <h2 class="headerowner2" style="font-family: 'Akaya Telivigala', cursive;"><b>PET INFORMATION</b></h2>
+
+    <table style="filter: alpha(opacity=40); opacity: 7;border:1px solid; margin-left:15px">
+            <tr><td class="headerowner"></td></tr>
             <tr ><td  class="bodyowner" ><b>Species :</b>@if($pets->species == NULL) Not Specified @else {{$pets->species}} @endif</td></tr>
 
 
@@ -72,15 +77,15 @@
          <!--section 3 -->
          <section>
         <div>
-        <table border="2" style="background-color: #ffffff; filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:15px; margin-top:20px">
-            <tr style="border:1px solid"><td class="headersection3"><b>Medical Files</b></td></tr>
-            <tr style="border:1px solid"><td class="headerowner"><b>Core Vaccine</b></td></tr>
-
-            <tr><table border="2">
-            <tr><th class="tablessection3">Vaccin Type</th>
-                <th class="tablessection3">Brand</th>
-                 <th class="tablessection3">Date</th>
-                <th class="tablessection3">Weight(Kg)</th>
+        <div class="containerhr"><h2 style="font-family: 'Akaya Telivigala', cursive; font-size:3rem; color:white"><b>Medical Files</b></h2></div>
+        <h2 class="headerowner2" style="font-family: 'Akaya Telivigala', cursive; margin-top:30px;  margin-bottom:25px ;font-size:2.5rem"><b>Core Vaccines</b></h2>
+     
+            <table border="2">
+            <tr><td colspan="6" class="headerowner3"></td></tr>
+            <tr><th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Vaccin Type</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Brand</th>
+                 <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Date</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Weight(Kg)</th>
 
                 
                 @foreach($vaccine as $vaccines)
@@ -103,10 +108,11 @@
 
 
             <tr><table border="2" style="margin-top:15px">
-            <tr><th class="tablessection3">Deworming</th>
-                <th class="tablessection3">Brand</th>
-                 <th class="tablessection3">Date</th>
-                <th class="tablessection3">Weight(Kg)</th>
+            <tr><td colspan="6" class="headerowner3"></td></tr>
+            <tr><th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Deworming</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Brand</th>
+                 <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Date</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Weight(Kg)</th>
 
             @foreach($deworming as $dewormings)
         
@@ -123,7 +129,7 @@
                  @endforeach
 
             </table>
-        </table>
+        
         </div>
         </section>
 
@@ -133,14 +139,14 @@
         <section id="others">
         <div>
         <table border="2" style="background-color: #ffffff; filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:15px; margin-top:15px">
-            <tr style="border:1px solid"><td class="headersection3"><b>Annual Vaccin &Dewormin& Spot On</b></td></tr>
+        <h2 class="headerowner2" style="font-family: 'Akaya Telivigala', cursive; margin-top:30px; font-size:2.5rem"><b>Medical Follow Up</b></h2>
     
             <tr><table border="2">
-            <tr><th colspan="6" class="headerparts">Annual Vaccin</th></tr>
-            <tr><th class="tablessection3">Vaccin Type</th>
-                <th class="tablessection3">Brand</th>
-                 <th class="tablessection3">Date</th>
-                <th class="tablessection3">Weight(Kg)</th>
+            <tr><th colspan="6" class="headerowner3" style="font-size:1.5rem ; font-family: 'Akaya Telivigala', cursive;">ANNUAL VACCINES</th></tr>
+            <tr><th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Vaccin Type</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Brand</th>
+                 <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Date</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Weight(Kg)</th>
 
                 
                 @foreach($annualvaccin as $annualvaccins)
@@ -162,11 +168,11 @@
 
 
             <tr><table border="2" style="margin-top:15px">
-            <tr><th colspan="6" class="headerparts">Trimesters Deworming</th></tr>
-            <tr><th class="tablessection3">Deworming</th>
-                <th class="tablessection3">Brand</th>
-                 <th class="tablessection3">Date</th>
-                <th class="tablessection3">Weight(Kg)</th>
+            <tr><th colspan="6" class="headerowner3" style="font-size:1.5rem ; font-family: 'Akaya Telivigala', cursive;">DEWORMING</th></tr>
+            <tr><th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Deworming</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Brand</th>
+                 <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Date</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Weight(Kg)</th>
            
 
             @foreach($tridewor as $tridewors)
@@ -189,11 +195,11 @@
 
 
             <tr><table border="2" style="margin-top:15px">
-            <tr><th colspan="6" class="headerparts">Anti kystes</th></tr>
-            <tr><th class="tablessection3">Spot On</th>
-                <th class="tablessection3">Brand</th>
-                 <th class="tablessection3">Date</th>
-                <th class="tablessection3">Weight(Kg)</th>
+            <tr><th colspan="6" class="headerowner3" style="font-size:1.5rem ; font-family: 'Akaya Telivigala', cursive;">ANTI-KYSTES</th></tr>
+            <tr><th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Anti-Kyste</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Brand</th>
+                 <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Date</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Weight(Kg)</th>
         
 
             @foreach($kyste as $kystes)
@@ -217,11 +223,11 @@
 
 
             <tr><table border="2" style="margin-top:15px">
-            <tr><th colspan="6" class="headerparts">Monthly Spot On</th></tr>
-            <tr><th class="tablessection3">Spot On</th>
-                <th class="tablessection3">Brand</th>
-                 <th class="tablessection3">Date</th>
-                <th class="tablessection3">Weight(Kg)</th>
+            <tr><th colspan="6" class="headerowner3" style="font-size:1.5rem ; font-family: 'Akaya Telivigala', cursive;">EXTERNAL PARASITES</th></tr>
+            <tr><th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Spot-On</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Brand</th>
+                 <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Date</th>
+                <th class="tablessection3" style="font-family: 'Akaya Telivigala', cursive;">Weight(Kg)</th>
               
 
             @foreach($monthly as $monthlys)

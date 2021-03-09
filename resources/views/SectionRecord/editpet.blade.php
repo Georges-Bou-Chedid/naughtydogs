@@ -124,8 +124,8 @@
          <section>
         <div>
         <table border="2" style="background-color: #ffffff; filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:15px; margin-top:20px">
-            <tr style="border:1px solid"><td class="headersection3"><b>Medical Files</b></td></tr>
-            <tr style="border:1px solid"><td class="headerowner"><b>Core Vaccine</b></td></tr>
+            <tr style="border:1px solid"><td class="headersection3" style="font-size:2.5rem"><b>Medical Files</b></td></tr>
+            <tr style="border:1px solid"><td class="headerowner" style="font-size:1.5rem"><b>Core Vaccine</b></td></tr>
 
             <form action="/allHistory/edit/vaccine/{{$history->id}}" method="POST">
                  @csrf
@@ -187,7 +187,7 @@
 
             <form action="/allHistory/edit/deworming/{{$history->id}}" method="POST">
             @csrf
-            <tr><table border="2" style="margin-left:340px; margin-top:15px">
+            <tr><table border="2" style="margin-top:15px">
             <tr><th class="tablessection3">Deworming</th>
                 <th class="tablessection3">Brand</th>
                  <th class="tablessection3">Date</th>
@@ -241,7 +241,7 @@
         <section id="others">
         <div>
         <table border="2" style="background-color: #ffffff; filter: alpha(opacity=40); opacity: 1;border:1px solid; margin-bottom:15px; margin-top:15px">
-            <tr style="border:1px solid"><td class="headersection3"><b>Annual Vaccin &Dewormin& Spot On</b></td></tr>
+            <tr style="border:1px solid"><td class="headersection3" style="font-size:2.5rem"><b>Annual Vaccin - Deworming - Spot On</b></td></tr>
             <form action="/allHistory/edit/annual/{{$history->id}}" method="POST">
                  @csrf
             <tr><table border="2">
@@ -292,8 +292,8 @@
 
             <form action="/allHistory/edit/trimestre/{{$history->id}}" method="POST">
             @csrf
-            <tr><table border="2" style="margin-left:340px; margin-top:15px">
-            <tr><th colspan="6" class="headerparts">Trimesters Deworming</th></tr>
+            <tr><table border="2" style="margin-top:15px">
+            <tr><th colspan="6" class="headerparts">Deworming</th></tr>
             <tr><th class="tablessection3">Deworming</th>
                 <th class="tablessection3">Brand</th>
                  <th class="tablessection3">Date</th>
@@ -310,15 +310,8 @@
                  <input id="type" name="type" placeholder="Deworming type" value="{{$tridewors->type}}"></input>
 
                  <td class="tablessection3"> 
-                <select id="Brand" name="Brand" focus>
-                <option value="">--Select--</option>
-               <option value="Fizer" {{ ($tridewors->Brand) == 'Fizer' ? 'selected' : '' }}>Fizer</option>        
-                 <option value="Canvac" {{ ($tridewors->Brand) == 'Canvac' ? 'selected' : '' }}>Canvac</option>
-                <option value="Virbac" {{ ($tridewors->Brand) == 'Virbac' ? 'selected' : '' }}>Virbac</option>        
-                 <option value="Biocan" {{ ($tridewors->Brand) == 'Biocan' ? 'selected' : '' }}>Biocan</option>
-                 <option value="Merial" {{ ($tridewors->Brand) == 'Merial' ? 'selected' : '' }}>Merial</option>
-                 <option value="Nobivac" {{ ($tridewors->Brand) == 'Nobivac' ? 'selected' : '' }}>Nobivac</option>
-                 </select></td>
+                 <input id="Brand" name="Brand" placeholder="brand" value="{{$tridewors->Brand}}"></input>
+
                  <td class="tablessection3"> <input type ="date" value="{{$tridewors->Date}}" name="Date" @foreach ($tridewor1 as $tridewors1) @if($tridewors->id == $tridewors1->id) style="color:red" @endif @endforeach></td>
                  <td class="tablessection3"> <input type ="Number" placeholder="Kg" value="{{$tridewors->Weight}}" name="Weight"></td>
                  <td><button class="white" type="submit"><i class="far fa-save icon1"></i></button></td>
@@ -340,7 +333,7 @@
             @csrf
             <tr><table border="2" style="margin-top:15px">
             <tr><th colspan="6" class="headerparts">Anti kystes</th></tr>
-            <tr><th class="tablessection3">Spot On</th>
+            <tr><th class="tablessection3">Anti Kyste</th>
                 <th class="tablessection3">Brand</th>
                  <th class="tablessection3">Date</th>
                 <th class="tablessection3">Weight(Kg)</th>
@@ -356,15 +349,8 @@
                  <input id="spot" name="spot" placeholder="spot" value="{{$kystes->Spot}}"></input>
 
                  <td class="tablessection3"> 
-                <select id="Brand" name="Brand" focus>
-                <option value="">--Select--</option>
-               <option value="Fizer" {{ ($kystes->Brand) == 'Fizer' ? 'selected' : '' }}>Fizer</option>        
-                 <option value="Canvac" {{ ($kystes->Brand) == 'Canvac' ? 'selected' : '' }}>Canvac</option>
-                <option value="Virbac" {{ ($kystes->Brand) == 'Virbac' ? 'selected' : '' }}>Virbac</option>        
-                 <option value="Biocan" {{ ($kystes->Brand) == 'Biocan' ? 'selected' : '' }}>Biocan</option>
-                 <option value="Merial" {{ ($kystes->Brand) == 'Merial' ? 'selected' : '' }}>Merial</option>
-                 <option value="Nobivac" {{ ($kystes->Brand) == 'Nobivac' ? 'selected' : '' }}>Nobivac</option>
-                 </select></td>
+                 <input id="Brand" name="Brand" placeholder="brand" value="{{$kystes->Brand}}"></input>
+
                  <td class="tablessection3"> <input type ="date" value="{{$kystes->Date}}" name="Date" @foreach ($kyste1 as $kystes1) @if($kystes->id == $kystes1->id) style="color:red" @endif @endforeach></td>
                  <td class="tablessection3"> <input type ="Number" placeholder="Kg" value="{{$kystes->Weight}}" name="Weight"></td>
                  <td><button class="white" type="submit"><i class="far fa-save icon1"></i></button></td>
@@ -384,8 +370,8 @@
 
             <form action="/allHistory/edit/monthly/{{$history->id}}" method="POST">
             @csrf
-            <tr><table border="2" style="margin-left:340px; margin-top:15px">
-            <tr><th colspan="6" class="headerparts">Monthly Spot On</th></tr>
+            <tr><table border="2" style="margin-top:15px">
+            <tr><th colspan="6" class="headerparts">External Parasites</th></tr>
             <tr><th class="tablessection3">Spot On</th>
                 <th class="tablessection3">Brand</th>
                  <th class="tablessection3">Date</th>
@@ -402,15 +388,8 @@
                  <input id="spot" name="spot" placeholder="spot" value="{{$monthlys->Spot}}"></input>
 
                  <td class="tablessection3"> 
-                <select id="Brand" name="Brand" focus>
-                <option value="">--Select--</option>
-               <option value="Fizer" {{ ($monthlys->Brand) == 'Fizer' ? 'selected' : '' }}>Fizer</option>        
-                 <option value="Canvac" {{ ($monthlys->Brand) == 'Canvac' ? 'selected' : '' }}>Canvac</option>
-                <option value="Virbac" {{ ($monthlys->Brand) == 'Virbac' ? 'selected' : '' }}>Virbac</option>        
-                 <option value="Biocan" {{ ($monthlys->Brand) == 'Biocan' ? 'selected' : '' }}>Biocan</option>
-                 <option value="Merial" {{ ($monthlys->Brand) == 'Merial' ? 'selected' : '' }}>Merial</option>
-                 <option value="Nobivac" {{ ($monthlys->Brand) == 'Nobivac' ? 'selected' : '' }}>Nobivac</option>
-                 </select></td>
+                 <input id="Brand" name="Brand" placeholder="brand" value="{{$monthlys->Brand}}"></input>
+
                  <td class="tablessection3"> <input type ="date" value="{{$monthlys->Date}}" name="Date" @foreach ($monthly1 as $monthlys1) @if($monthlys->id == $monthlys1->id) style="color:red" @endif @endforeach></td>
                  <td class="tablessection3"> <input type ="Number" placeholder="Kg" value="{{$monthlys->Weight}}" name="Weight"></td>
                  <td><button class="white" type="submit"><i class="far fa-save icon1"></i></button></td>
